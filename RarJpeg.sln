@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.29001.49
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RarJpeg", "RarJpeg\RarJpeg.csproj", "{0204AB8D-FFF9-4CBE-A7B8-5B44C8209532}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Debug|x64 = Debug|x64
+		Release|Any CPU = Release|Any CPU
+		Release|x64 = Release|x64
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{0204AB8D-FFF9-4CBE-A7B8-5B44C8209532}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0204AB8D-FFF9-4CBE-A7B8-5B44C8209532}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0204AB8D-FFF9-4CBE-A7B8-5B44C8209532}.Debug|x64.ActiveCfg = Debug|x64
+		{0204AB8D-FFF9-4CBE-A7B8-5B44C8209532}.Debug|x64.Build.0 = Debug|x64
+		{0204AB8D-FFF9-4CBE-A7B8-5B44C8209532}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0204AB8D-FFF9-4CBE-A7B8-5B44C8209532}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0204AB8D-FFF9-4CBE-A7B8-5B44C8209532}.Release|x64.ActiveCfg = Release|x64
+		{0204AB8D-FFF9-4CBE-A7B8-5B44C8209532}.Release|x64.Build.0 = Release|x64
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {915E5341-AAAC-4AEA-BD01-A9D59B1FD756}
+	EndGlobalSection
+EndGlobal
