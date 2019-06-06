@@ -1,0 +1,71 @@
+﻿<Window x:Class="RarJpeg.Views.MainView"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:RarJpeg.Views"
+        xmlns:cal="http://www.caliburnproject.org"
+        mc:Ignorable="d"
+        Title="RarJpeg"
+        Height="200"
+        Width="582"
+        MinHeight="200"
+        MinWidth="582"
+        WindowStartupLocation="CenterScreen">
+    <Grid>
+        <!-- App borders -->
+        <Grid.RowDefinitions>
+            <RowDefinition Height="10"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="10"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="10"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="10"/>
+        </Grid.ColumnDefinitions>
+        <!-- Inner grid with buttons -->
+        <Grid Grid.Row="1" Grid.Column="1">
+            <!-- Buttons zones and borders -->
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="10"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="10"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="10"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="5"/>
+                <ColumnDefinition Width="Auto"/>
+            </Grid.ColumnDefinitions>
+
+            <TextBox Grid.Row="0" Grid.Column="0"
+                     VerticalAlignment="Stretch"
+                     VerticalContentAlignment="Center"
+                     Text="{Binding ContainerFilePath}"/>
+            <Button Grid.Row="0" Grid.Column="2"
+                    cal:Message.Attach="ContainerFileButton"
+                    Content="Select container file"/>
+
+            <TextBox Grid.Row="2" Grid.Column="0"
+                     VerticalAlignment="Stretch"
+                     VerticalContentAlignment="Center"
+                     Text="{Binding ArchiveFilePath}"/>
+            <Button Grid.Row="2" Grid.Column="2"
+                    cal:Message.Attach="ArchiveFileButton"
+                    Content="Select archive"/>
+
+            <TextBox Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="3"
+                     VerticalAlignment="Stretch"
+                     VerticalContentAlignment="Center"
+                     Text="{Binding OutputFilePath}"/>
+
+            <Button Grid.Row="6" Grid.Column="0" Grid.ColumnSpan="3"
+                    cal:Message.Attach="StartButton"
+                    Content="Start"/>
+        </Grid>
+    </Grid>
+</Window>
