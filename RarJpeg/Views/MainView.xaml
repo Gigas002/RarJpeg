@@ -7,6 +7,8 @@
         xmlns:cal="http://www.caliburnproject.org"
         xmlns:controls="http://metro.mahapps.com/winfx/xaml/controls"
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        xmlns:vms="clr-namespace:RarJpeg.ViewModels"
+        xmlns:vs="clr-namespace:RarJpeg.Views"
         mc:Ignorable="d"
         Background="{DynamicResource MaterialDesignPaper}"
         FontFamily="{DynamicResource MaterialDesignFont}"
@@ -22,98 +24,107 @@
         Width="500"
         ResizeMode="CanMinimize"
         WindowStartupLocation="CenterScreen">
-    <Grid>
-        <!-- App borders -->
-        <Grid.RowDefinitions>
-            <RowDefinition Height="10"/>
-            <RowDefinition Height="*"/>
-            <RowDefinition Height="10"/>
-        </Grid.RowDefinitions>
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="10"/>
-            <ColumnDefinition Width="*"/>
-            <ColumnDefinition Width="10"/>
-        </Grid.ColumnDefinitions>
-        <!-- Inner grid with buttons -->
-        <Grid Grid.Row="1" Grid.Column="1"
-              IsEnabled="{Binding IsGridEnabled}">
-            <!-- Buttons zones and borders -->
+    <controls:MetroWindow.Resources>
+        <ResourceDictionary>
+            <DataTemplate DataType="{x:Type vms:MessageBoxDialogViewModel}">
+                <vs:MessageBoxDialogView/>
+            </DataTemplate>
+        </ResourceDictionary>
+    </controls:MetroWindow.Resources>
+    <materialDesign:DialogHost>
+        <Grid>
+            <!-- App borders -->
             <Grid.RowDefinitions>
-                <RowDefinition Height="*"/>
                 <RowDefinition Height="10"/>
                 <RowDefinition Height="*"/>
                 <RowDefinition Height="10"/>
-                <RowDefinition Height="*"/>
-                <RowDefinition Height="10"/>
-                <RowDefinition Height="*"/>
-                <RowDefinition Height="10"/>
-                <RowDefinition Height="Auto"/>
             </Grid.RowDefinitions>
             <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="10"/>
                 <ColumnDefinition Width="*"/>
-                <ColumnDefinition Width="5"/>
-                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="10"/>
             </Grid.ColumnDefinitions>
+            <!-- Inner grid with buttons -->
+            <Grid Grid.Row="1" Grid.Column="1"
+              IsEnabled="{Binding IsGridEnabled}">
+                <!-- Buttons zones and borders -->
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="10"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="10"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="10"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="10"/>
+                    <RowDefinition Height="Auto"/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="5"/>
+                    <ColumnDefinition Width="Auto"/>
+                </Grid.ColumnDefinitions>
 
-            <TextBox Grid.Row="0" Grid.Column="0"
+                <TextBox Grid.Row="0" Grid.Column="0"
                      VerticalAlignment="Stretch"
                      VerticalContentAlignment="Center"
                      Text="{Binding ContainerPath}"
                      Style="{StaticResource MaterialDesignFloatingHintTextBox}">
-                <materialDesign:HintAssist.Hint>
-                    <StackPanel Orientation="Horizontal">
-                        <materialDesign:PackIcon Kind="File"/>
-                        <TextBlock Text="{Binding ContainerHint}"/>
-                    </StackPanel>
-                </materialDesign:HintAssist.Hint>
-            </TextBox>
-            <Button Grid.Row="0" Grid.Column="2"
+                    <materialDesign:HintAssist.Hint>
+                        <StackPanel Orientation="Horizontal">
+                            <materialDesign:PackIcon Kind="File"/>
+                            <TextBlock Text="{Binding ContainerHint}"/>
+                        </StackPanel>
+                    </materialDesign:HintAssist.Hint>
+                </TextBox>
+                <Button Grid.Row="0" Grid.Column="2"
                     cal:Message.Attach="SelectContainerButton"
                     Content="{materialDesign:PackIcon File}"/>
 
-            <TextBox Grid.Row="2" Grid.Column="0"
+                <TextBox Grid.Row="2" Grid.Column="0"
                      VerticalAlignment="Stretch"
                      VerticalContentAlignment="Center"
                      Text="{Binding ArchivePath}"
                      Style="{StaticResource MaterialDesignFloatingHintTextBox}">
-                <materialDesign:HintAssist.Hint>
-                    <StackPanel Orientation="Horizontal">
-                        <materialDesign:PackIcon Kind="File"/>
-                        <TextBlock Text="{Binding ArchiveHint}"/>
-                    </StackPanel>
-                </materialDesign:HintAssist.Hint>
-            </TextBox>
-            <Button Grid.Row="2" Grid.Column="2"
+                    <materialDesign:HintAssist.Hint>
+                        <StackPanel Orientation="Horizontal">
+                            <materialDesign:PackIcon Kind="File"/>
+                            <TextBlock Text="{Binding ArchiveHint}"/>
+                        </StackPanel>
+                    </materialDesign:HintAssist.Hint>
+                </TextBox>
+                <Button Grid.Row="2" Grid.Column="2"
                     cal:Message.Attach="SelectArchiveButton"
                     Content="{materialDesign:PackIcon File}"/>
 
-            <TextBox Grid.Row="4" Grid.Column="0"
+                <TextBox Grid.Row="4" Grid.Column="0"
                      VerticalAlignment="Stretch"
                      VerticalContentAlignment="Center"
                      Text="{Binding ReadyPath}"
                      Style="{StaticResource MaterialDesignFloatingHintTextBox}">
-                <materialDesign:HintAssist.Hint>
-                    <StackPanel Orientation="Horizontal">
-                        <materialDesign:PackIcon Kind="File"/>
-                        <TextBlock Text="{Binding ReadyHint}"/>
-                    </StackPanel>
-                </materialDesign:HintAssist.Hint>
-            </TextBox>
-            <Button Grid.Row="4" Grid.Column="2"
+                    <materialDesign:HintAssist.Hint>
+                        <StackPanel Orientation="Horizontal">
+                            <materialDesign:PackIcon Kind="File"/>
+                            <TextBlock Text="{Binding ReadyHint}"/>
+                        </StackPanel>
+                    </materialDesign:HintAssist.Hint>
+                </TextBox>
+                <Button Grid.Row="4" Grid.Column="2"
                     cal:Message.Attach="ReadyPathButton"
                     Content="{materialDesign:PackIcon File}"/>
 
-            <Button Grid.Row="6" Grid.Column="0"
+                <Button Grid.Row="6" Grid.Column="0"
                     Grid.ColumnSpan="3"
                     cal:Message.Attach="StartButton"
                     Content="{Binding Start}"/>
 
-            <TextBlock Grid.Row="8" Grid.Column="0"
+                <TextBlock Grid.Row="8" Grid.Column="0"
                        TextAlignment="Left"
                        Text="{Binding Copyright}"/>
-            <TextBlock Grid.Row="8" Grid.Column="2"
+                <TextBlock Grid.Row="8" Grid.Column="2"
                        TextAlignment="Right"
                        Text="{Binding Version}"/>
+            </Grid>
         </Grid>
-    </Grid>
+    </materialDesign:DialogHost>
 </controls:MetroWindow>

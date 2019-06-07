@@ -4,6 +4,7 @@ using System.Threading.Tasks;
 using System.Windows;
 using Caliburn.Micro;
 using ICSharpCode.SharpZipLib.Zip;
+using MaterialDesignThemes.Wpf;
 using Ookii.Dialogs.Wpf;
 using RarJpeg.Models;
 
@@ -19,6 +20,8 @@ namespace RarJpeg.ViewModels
         //todo rename model's class
         //todo localize strings
         //todo xml-doc
+        //todo add MessageBox
+        //todo material dialogs
 
         #region Properties
 
@@ -108,10 +111,17 @@ namespace RarJpeg.ViewModels
 
         #region Buttons
 
-        public void SelectContainerButton()
+        public async ValueTask SelectContainerButton()
         {
-            VistaOpenFileDialog openFileDialog = new VistaOpenFileDialog();
-            ContainerPath = openFileDialog.ShowDialog() == true ? openFileDialog.FileName : ContainerPath;
+            try
+            {
+                VistaOpenFileDialog openFileDialog = new VistaOpenFileDialog();
+                ContainerPath = openFileDialog.ShowDialog() == true ? openFileDialog.FileName : ContainerPath;
+            }
+            catch (Exception exception)
+            {
+                await DialogHost.Show(new MessageBoxDialogViewModel(exception.Message));
+            }
         }
 
         public void SelectArchiveButton()
@@ -186,19 +196,19 @@ namespace RarJpeg.ViewModels
             }
             catch (Exception)
             {
-                throw new Exception("Selected archive file is corrupted or not an archive.");
+                throw new Exception("Selected archive is corrupted or not an archive.");
             }
 
             #endregion
 
-            #region Check output file
+            #region Check ready file
 
             if (string.IsNullOrWhiteSpace(ReadyPath))
-                throw new Exception("Output file's path is empty.");
+                throw new Exception("Ready file's path is empty.");
             ReadyPath = $"{ReadyPath}{Path.GetExtension(ArchivePath)}" +
                              $"{Path.GetExtension(ContainerPath)}";
             if (File.Exists(ReadyPath))
-                throw new Exception("Output file is already exists.");
+                throw new Exception("Ready file is already exists.");
 
             #endregion
         }
