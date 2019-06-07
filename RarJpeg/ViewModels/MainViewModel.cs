@@ -16,11 +16,17 @@ namespace RarJpeg.ViewModels
     internal class MainViewModel : PropertyChangedBase
     {
         //todo material design
-        //todo button for output file
+        //todo localize strings
 
         #region Properties
 
-        //todo Add author and version info
+        #region Consts
+
+        public string Copyright { get; } = Enums.MainViewModel.Copyright;
+
+        public string Version { get; } = Enums.MainViewModel.Version;
+
+        #endregion
 
         #region Backing fields
 
@@ -95,13 +101,19 @@ namespace RarJpeg.ViewModels
         public void SelectContainerButton()
         {
             VistaOpenFileDialog openFileDialog = new VistaOpenFileDialog();
-            ContainerPath = openFileDialog.ShowDialog() != true ? ContainerPath : openFileDialog.FileName;
+            ContainerPath = openFileDialog.ShowDialog() == true ? openFileDialog.FileName : ContainerPath;
         }
 
         public void SelectArchiveButton()
         {
             VistaOpenFileDialog openFileDialog = new VistaOpenFileDialog();
-            ArchivePath = openFileDialog.ShowDialog() != true ? ArchivePath : openFileDialog.FileName;
+            ArchivePath = openFileDialog.ShowDialog() == true ? openFileDialog.FileName : ArchivePath;
+        }
+
+        public void ReadyPathButton()
+        {
+            VistaSaveFileDialog saveFileDialog = new VistaSaveFileDialog();
+            ReadyPath = saveFileDialog.ShowDialog() == true ? saveFileDialog.FileName : ReadyPath;
         }
 
         public async void StartButton()

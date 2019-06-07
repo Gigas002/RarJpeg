@@ -35,6 +35,8 @@
                 <RowDefinition Height="*"/>
                 <RowDefinition Height="10"/>
                 <RowDefinition Height="*"/>
+                <RowDefinition Height="10"/>
+                <RowDefinition Height="Auto"/>
             </Grid.RowDefinitions>
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="*"/>
@@ -58,14 +60,25 @@
                     cal:Message.Attach="SelectArchiveButton"
                     Content="Select archive"/>
 
-            <TextBox Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="3"
+            <TextBox Grid.Row="4" Grid.Column="0"
                      VerticalAlignment="Stretch"
                      VerticalContentAlignment="Center"
                      Text="{Binding ReadyPath}"/>
+            <Button Grid.Row="4" Grid.Column="2"
+                    cal:Message.Attach="ReadyPathButton"
+                    Content="Select ready file's path"/>
 
-            <Button Grid.Row="6" Grid.Column="0" Grid.ColumnSpan="3"
+            <Button Grid.Row="6" Grid.Column="0"
+                    Grid.ColumnSpan="3"
                     cal:Message.Attach="StartButton"
                     Content="Start"/>
+
+            <TextBlock Grid.Row="8" Grid.Column="0"
+                       TextAlignment="Left"
+                       Text="{Binding Copyright}"/>
+            <TextBlock Grid.Row="8" Grid.Column="2"
+                       TextAlignment="Right"
+                       Text="{Binding Version}"/>
         </Grid>
     </Grid>
 </Window>
