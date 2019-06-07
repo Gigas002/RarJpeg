@@ -1,15 +1,26 @@
-﻿<Window x:Class="RarJpeg.Views.MainView"
+﻿<controls:MetroWindow
+        x:Class="RarJpeg.Views.MainView"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:cal="http://www.caliburnproject.org"
+        xmlns:controls="http://metro.mahapps.com/winfx/xaml/controls"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
         mc:Ignorable="d"
+        Background="{DynamicResource MaterialDesignPaper}"
+        FontFamily="{DynamicResource MaterialDesignFont}"
+        TextElement.FontSize="14"
+        TextElement.FontWeight="Regular"
+        TextElement.Foreground="{DynamicResource MaterialDesignBody}"
+        TextOptions.TextFormattingMode="Ideal"
+        TextOptions.TextRenderingMode="Auto"
+        GlowBrush="Black"
+        TitleCharacterCasing="Normal"
         Title="RarJpeg"
-        Height="200"
-        Width="582"
-        MinHeight="200"
-        MinWidth="582"
+        Height="250"
+        Width="500"
+        ResizeMode="CanMinimize"
         WindowStartupLocation="CenterScreen">
     <Grid>
         <!-- App borders -->
@@ -47,31 +58,55 @@
             <TextBox Grid.Row="0" Grid.Column="0"
                      VerticalAlignment="Stretch"
                      VerticalContentAlignment="Center"
-                     Text="{Binding ContainerPath}"/>
+                     Text="{Binding ContainerPath}"
+                     Style="{StaticResource MaterialDesignFloatingHintTextBox}">
+                <materialDesign:HintAssist.Hint>
+                    <StackPanel Orientation="Horizontal">
+                        <materialDesign:PackIcon Kind="File"/>
+                        <TextBlock Text="{Binding ContainerHint}"/>
+                    </StackPanel>
+                </materialDesign:HintAssist.Hint>
+            </TextBox>
             <Button Grid.Row="0" Grid.Column="2"
                     cal:Message.Attach="SelectContainerButton"
-                    Content="Select container file"/>
+                    Content="{materialDesign:PackIcon File}"/>
 
             <TextBox Grid.Row="2" Grid.Column="0"
                      VerticalAlignment="Stretch"
                      VerticalContentAlignment="Center"
-                     Text="{Binding ArchivePath}"/>
+                     Text="{Binding ArchivePath}"
+                     Style="{StaticResource MaterialDesignFloatingHintTextBox}">
+                <materialDesign:HintAssist.Hint>
+                    <StackPanel Orientation="Horizontal">
+                        <materialDesign:PackIcon Kind="File"/>
+                        <TextBlock Text="{Binding ArchiveHint}"/>
+                    </StackPanel>
+                </materialDesign:HintAssist.Hint>
+            </TextBox>
             <Button Grid.Row="2" Grid.Column="2"
                     cal:Message.Attach="SelectArchiveButton"
-                    Content="Select archive"/>
+                    Content="{materialDesign:PackIcon File}"/>
 
             <TextBox Grid.Row="4" Grid.Column="0"
                      VerticalAlignment="Stretch"
                      VerticalContentAlignment="Center"
-                     Text="{Binding ReadyPath}"/>
+                     Text="{Binding ReadyPath}"
+                     Style="{StaticResource MaterialDesignFloatingHintTextBox}">
+                <materialDesign:HintAssist.Hint>
+                    <StackPanel Orientation="Horizontal">
+                        <materialDesign:PackIcon Kind="File"/>
+                        <TextBlock Text="{Binding ReadyHint}"/>
+                    </StackPanel>
+                </materialDesign:HintAssist.Hint>
+            </TextBox>
             <Button Grid.Row="4" Grid.Column="2"
                     cal:Message.Attach="ReadyPathButton"
-                    Content="Select ready file's path"/>
+                    Content="{materialDesign:PackIcon File}"/>
 
             <Button Grid.Row="6" Grid.Column="0"
                     Grid.ColumnSpan="3"
                     cal:Message.Attach="StartButton"
-                    Content="Start"/>
+                    Content="{Binding Start}"/>
 
             <TextBlock Grid.Row="8" Grid.Column="0"
                        TextAlignment="Left"
@@ -81,4 +116,4 @@
                        Text="{Binding Version}"/>
         </Grid>
     </Grid>
-</Window>
+</controls:MetroWindow>

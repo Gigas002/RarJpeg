@@ -15,12 +15,22 @@ namespace RarJpeg.ViewModels
 {
     internal class MainViewModel : PropertyChangedBase
     {
-        //todo material design
+        //todo move strings to enums
+        //todo rename model's class
         //todo localize strings
+        //todo xml-doc
 
         #region Properties
 
-        #region Consts
+        #region UI
+
+        public string ContainerHint { get; } = Enums.MainViewModel.ContainerHint;
+
+        public string ArchiveHint { get; } = Enums.MainViewModel.ArchiveHint;
+
+        public string ReadyHint { get; } = Enums.MainViewModel.ReadyHint;
+
+        public string Start { get; } = Enums.MainViewModel.Start;
 
         public string Copyright { get; } = Enums.MainViewModel.Copyright;
 
