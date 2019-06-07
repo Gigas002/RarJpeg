@@ -16,7 +16,6 @@ namespace RarJpeg.ViewModels
 {
     internal class MainViewModel : PropertyChangedBase
     {
-        //todo rename model's class
         //todo localize strings
         //todo xml-doc
         //todo material dialogs

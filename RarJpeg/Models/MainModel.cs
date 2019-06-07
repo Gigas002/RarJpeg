@@ -5,10 +5,10 @@ namespace RarJpeg.Models
 {
     internal static class MainModel
     {
-        internal static void RarJpeg(string containerFilePath, string archiveFilePath, string outputFilePath)
+        internal static void RarJpeg(string containerFilePath, string archivePath, string outputFilePath)
         {
             byte[] containerBytes = File.ReadAllBytes(containerFilePath);
-            byte[] archiveBytes = File.ReadAllBytes(archiveFilePath);
+            byte[] archiveBytes = File.ReadAllBytes(archivePath);
             byte[] outputBytes = new byte[containerBytes.Length + archiveBytes.Length];
 
             Array.Copy(containerBytes, 0, outputBytes, 0, containerBytes.Length);
