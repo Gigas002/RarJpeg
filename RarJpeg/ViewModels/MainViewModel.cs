@@ -16,11 +16,9 @@ namespace RarJpeg.ViewModels
 {
     internal class MainViewModel : PropertyChangedBase
     {
-        //todo move strings to enums
         //todo rename model's class
         //todo localize strings
         //todo xml-doc
-        //todo add MessageBox
         //todo material dialogs
 
         #region Properties
@@ -124,30 +122,67 @@ namespace RarJpeg.ViewModels
             }
         }
 
-        public void SelectArchiveButton()
+        public async ValueTask SelectArchiveButton()
         {
-            VistaOpenFileDialog openFileDialog = new VistaOpenFileDialog();
-            ArchivePath = openFileDialog.ShowDialog() == true ? openFileDialog.FileName : ArchivePath;
+            try
+            {
+                VistaOpenFileDialog openFileDialog = new VistaOpenFileDialog();
+                ArchivePath = openFileDialog.ShowDialog() == true ? openFileDialog.FileName : ArchivePath;
+            }
+            catch (Exception exception)
+            {
+                await DialogHost.Show(new MessageBoxDialogViewModel(exception.Message));
+            }
         }
 
-        public void ReadyPathButton()
+        public async ValueTask ReadyPathButton()
         {
-            VistaSaveFileDialog saveFileDialog = new VistaSaveFileDialog();
-            ReadyPath = saveFileDialog.ShowDialog() == true ? saveFileDialog.FileName : ReadyPath;
+            try
+            {
+                VistaSaveFileDialog saveFileDialog = new VistaSaveFileDialog();
+                ReadyPath = saveFileDialog.ShowDialog() == true ? saveFileDialog.FileName : ReadyPath;
+            }
+            catch (Exception exception)
+            {
+                await DialogHost.Show(new MessageBoxDialogViewModel(exception.Message));
+            }
         }
 
-        public async void StartButton()
+        public async ValueTask StartButton()
+        {
+            if (!await StartWork()) return;
+
+            bool isSuccessful = true;
+            try
+            {
+                await Task.Run(() => MainModel.RarJpeg(ContainerPath, ArchivePath, _readyPath));
+            }
+            catch (Exception exception)
+            {
+                await DialogHost.Show(new MessageBoxDialogViewModel(exception.Message));
+                isSuccessful = false;
+            }
+
+            await CancelWork(isSuccessful);
+        }
+
+        #endregion
+
+        #region Other
+
+        private async ValueTask<bool> StartWork()
         {
             #region Cheсks
 
             try
             {
-                CheckData();
+                await CheckData();
             }
             catch (Exception exception)
             {
-                MessageBox.Show(exception.Message);
-                return;
+                if (string.IsNullOrWhiteSpace(exception.Message)) return false;
+                await DialogHost.Show(new MessageBoxDialogViewModel(exception.Message));
+                return false;
             }
 
             #endregion
@@ -155,60 +190,54 @@ namespace RarJpeg.ViewModels
             //Block the UI while working.
             IsGridEnabled = false;
 
-            try
-            {
-                await Task.Run(() => MainModel.RarJpeg(ContainerPath, ArchivePath, ReadyPath));
-            }
-            catch (Exception exception)
-            {
-                MessageBox.Show($"Error occured: {exception.Message}. Inner exception: {exception.InnerException?.Message}.");
-                IsGridEnabled = true;
-                return;
-            }
-
-            MessageBox.Show("Done!");
-
-            IsGridEnabled = true;
+            return true;
         }
 
-        #endregion
+        private async ValueTask CancelWork(bool isSuccessful)
+        {
+            IsGridEnabled = true;
+            _readyPath = ReadyPath;
+            if (isSuccessful)
+                await DialogHost.Show(new MessageBoxDialogViewModel(Enums.MainViewModel.Done));
+        }
 
-        #region Other
-
-        private void CheckData()
+        private async ValueTask CheckData()
         {
             #region Check container file
 
             if (string.IsNullOrWhiteSpace(ContainerPath) || !File.Exists(ContainerPath))
-                throw new Exception("Container file doesn't exist or path string is empty.");
+                throw new Exception(Enums.MainViewModel.ContainerExistEmpty);
+            if (string.IsNullOrWhiteSpace(Path.GetExtension(ContainerPath)))
+            {
+                if (!(bool)
+                        await DialogHost.Show(new MessageBoxDialogViewModel(Enums.MainViewModel.ContainerExtension,
+                                                                            Visibility.Visible)))
+                    throw new Exception(string.Empty);
+            }
 
             #endregion
 
             #region Check archive
 
             if (string.IsNullOrWhiteSpace(ArchivePath) || !File.Exists(ArchivePath))
-                throw new Exception("Archive doesn't exist or path string is empty.");
-            try
-            {
-                ZipFile zipFile = new ZipFile(ArchivePath);
-                if (!zipFile.TestArchive(true))
-                    throw new Exception("Archive is corrupted.");
-            }
-            catch (Exception)
-            {
-                throw new Exception("Selected archive is corrupted or not an archive.");
-            }
+                throw new Exception(Enums.MainViewModel.ArchiveExistEmpty);
+            if (string.IsNullOrWhiteSpace(Path.GetExtension(ArchivePath)))
+                throw new Exception(Enums.MainViewModel.ArchiveExtension);
+            if (!new ZipFile(ArchivePath).TestArchive(true))
+                throw new Exception(Enums.MainViewModel.ArchiveCorrupted);
 
             #endregion
 
             #region Check ready file
 
             if (string.IsNullOrWhiteSpace(ReadyPath))
-                throw new Exception("Ready file's path is empty.");
-            ReadyPath = $"{ReadyPath}{Path.GetExtension(ArchivePath)}" +
+                throw new Exception(Enums.MainViewModel.ReadyEmpty);
+            if (!string.IsNullOrWhiteSpace(Path.GetExtension(ReadyPath)))
+                throw new Exception(Enums.MainViewModel.ReadyExtension);
+            _readyPath = $"{ReadyPath}{Path.GetExtension(ArchivePath)}" +
                              $"{Path.GetExtension(ContainerPath)}";
             if (File.Exists(ReadyPath))
-                throw new Exception("Ready file is already exists.");
+                throw new Exception(Enums.MainViewModel.ReadyExist);
 
             #endregion
         }

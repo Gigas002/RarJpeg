@@ -71,6 +71,7 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="Enums\MainViewModel.cs" />
+    <Compile Include="Enums\MessageBoxDialogViewModel.cs" />
     <Compile Include="Models\MainModel.cs" />
     <Compile Include="ViewModels\MainViewModel.cs" />
     <Compile Include="ViewModels\MessageBoxDialogViewModel.cs" />

@@ -10,10 +10,13 @@ namespace RarJpeg.ViewModels
 
         #region UI
 
-        
+        public string CopyToClipboardToolTip { get; } = Enums.MessageBoxDialogViewModel.CopyToClipboardToolTip;
+
+        public string AcceptButtonContent { get; } = Enums.MessageBoxDialogViewModel.AcceptButtonContent;
+
+        public string CancelButtonContent { get; } = Enums.MessageBoxDialogViewModel.CancelButtonContent;
 
         #endregion
-
 
         private string _message;
 
