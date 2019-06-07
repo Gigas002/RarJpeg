@@ -1,9 +1,8 @@
 ﻿<Window x:Class="RarJpeg.Views.MainView"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:RarJpeg.Views"
         xmlns:cal="http://www.caliburnproject.org"
         mc:Ignorable="d"
         Title="RarJpeg"
@@ -25,7 +24,8 @@
             <ColumnDefinition Width="10"/>
         </Grid.ColumnDefinitions>
         <!-- Inner grid with buttons -->
-        <Grid Grid.Row="1" Grid.Column="1">
+        <Grid Grid.Row="1" Grid.Column="1"
+              IsEnabled="{Binding IsGridEnabled}">
             <!-- Buttons zones and borders -->
             <Grid.RowDefinitions>
                 <RowDefinition Height="*"/>
@@ -45,23 +45,23 @@
             <TextBox Grid.Row="0" Grid.Column="0"
                      VerticalAlignment="Stretch"
                      VerticalContentAlignment="Center"
-                     Text="{Binding ContainerFilePath}"/>
+                     Text="{Binding ContainerPath}"/>
             <Button Grid.Row="0" Grid.Column="2"
-                    cal:Message.Attach="ContainerFileButton"
+                    cal:Message.Attach="SelectContainerButton"
                     Content="Select container file"/>
 
             <TextBox Grid.Row="2" Grid.Column="0"
                      VerticalAlignment="Stretch"
                      VerticalContentAlignment="Center"
-                     Text="{Binding ArchiveFilePath}"/>
+                     Text="{Binding ArchivePath}"/>
             <Button Grid.Row="2" Grid.Column="2"
-                    cal:Message.Attach="ArchiveFileButton"
+                    cal:Message.Attach="SelectArchiveButton"
                     Content="Select archive"/>
 
             <TextBox Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="3"
                      VerticalAlignment="Stretch"
                      VerticalContentAlignment="Center"
-                     Text="{Binding OutputFilePath}"/>
+                     Text="{Binding ReadyPath}"/>
 
             <Button Grid.Row="6" Grid.Column="0" Grid.ColumnSpan="3"
                     cal:Message.Attach="StartButton"

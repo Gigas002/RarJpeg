@@ -1,8 +1,12 @@
 ﻿using System;
 using System.IO;
+using System.Threading.Tasks;
 using System.Windows;
 using Caliburn.Micro;
+using ICSharpCode.SharpZipLib.Zip;
 using Ookii.Dialogs.Wpf;
+using RarJpeg.Models;
+
 // ReSharper disable MemberCanBePrivate.Global
 // ReSharper disable UnusedMember.Global
 // ReSharper disable ClassNeverInstantiated.Global
@@ -11,47 +15,62 @@ namespace RarJpeg.ViewModels
 {
     internal class MainViewModel : PropertyChangedBase
     {
+        //todo material design
+        //todo button for output file
+
         #region Properties
 
         //todo Add author and version info
 
         #region Backing fields
 
-        private string _containerFilePath;
+        private bool _isGridEnabled;
 
-        private string _archiveFilePath;
+        private string _containerPath;
 
-        private string _outputFilePath;
+        private string _archivePath;
+
+        private string _readyPath;
 
         #endregion
 
-        public string ContainerFilePath
+        public bool IsGridEnabled
         {
-            get => _containerFilePath;
+            get => _isGridEnabled;
             set
             {
-                _containerFilePath = value;
-                NotifyOfPropertyChange(() => ContainerFilePath);
+                _isGridEnabled = value;
+                NotifyOfPropertyChange(() => IsGridEnabled);
             }
         }
 
-        public string ArchiveFilePath
+        public string ContainerPath
         {
-            get => _archiveFilePath;
+            get => _containerPath;
             set
             {
-                _archiveFilePath = value;
-                NotifyOfPropertyChange(() => ArchiveFilePath);
+                _containerPath = value;
+                NotifyOfPropertyChange(() => ContainerPath);
             }
         }
 
-        public string OutputFilePath
+        public string ArchivePath
         {
-            get => _outputFilePath;
+            get => _archivePath;
             set
             {
-                _outputFilePath = value;
-                NotifyOfPropertyChange(() => OutputFilePath);
+                _archivePath = value;
+                NotifyOfPropertyChange(() => ArchivePath);
+            }
+        }
+
+        public string ReadyPath
+        {
+            get => _readyPath;
+            set
+            {
+                _readyPath = value;
+                NotifyOfPropertyChange(() => ReadyPath);
             }
         }
 
@@ -61,9 +80,10 @@ namespace RarJpeg.ViewModels
 
         public MainViewModel()
         {
-            ContainerFilePath = string.Empty;
-            ArchiveFilePath = string.Empty;
-            OutputFilePath = string.Empty;
+            IsGridEnabled = true;
+            ContainerPath = string.Empty;
+            ArchivePath = string.Empty;
+            ReadyPath = string.Empty;
         }
 
         #endregion
@@ -72,100 +92,93 @@ namespace RarJpeg.ViewModels
 
         #region Buttons
 
-        public void ContainerFileButton()
+        public void SelectContainerButton()
         {
             VistaOpenFileDialog openFileDialog = new VistaOpenFileDialog();
-            ContainerFilePath = openFileDialog.ShowDialog() != true ? ContainerFilePath : openFileDialog.FileName;
+            ContainerPath = openFileDialog.ShowDialog() != true ? ContainerPath : openFileDialog.FileName;
         }
 
-        public void ArchiveFileButton()
+        public void SelectArchiveButton()
         {
             VistaOpenFileDialog openFileDialog = new VistaOpenFileDialog();
-            ArchiveFilePath = openFileDialog.ShowDialog() != true ? ArchiveFilePath : openFileDialog.FileName;
+            ArchivePath = openFileDialog.ShowDialog() != true ? ArchivePath : openFileDialog.FileName;
         }
 
         public async void StartButton()
         {
-            #region Cheks
+            #region Cheсks
 
-            if (!CheckData())
+            try
+            {
+                CheckData();
+            }
+            catch (Exception exception)
+            {
+                MessageBox.Show(exception.Message);
                 return;
+            }
 
             #endregion
 
-            //todo async
-            //todo block interface
+            //Block the UI while working.
+            IsGridEnabled = false;
 
-            //VistaSaveFileDialog vistaSaveFileDialog = new VistaSaveFileDialog();
-            //vistaSaveFileDialog.ShowDialog();
-
-            //ResultingFileInfo = new FileInfo($"{vistaSaveFileDialog.FileName}{InnerFileInfo.Extension}{ContainerFileInfo.Extension}");
-            //if (ResultingFileInfo.Exists)
-            //    MessageBox.Show("This file already exists.");
-
-            //OutputFilePath = $"{OutputFilePath}{Path.GetExtension(ArchiveFilePath)}" +
-            //                 $"{Path.GetExtension(ContainerFilePath)}";
-
-            byte[] containerBytes = File.ReadAllBytes(ContainerFilePath);
-            byte[] innerBytes = File.ReadAllBytes(ArchiveFilePath);
-            byte[] readyBytes = new byte[containerBytes.Length + innerBytes.Length];
-
-            Array.Copy(containerBytes, 0, readyBytes, 0, containerBytes.Length);
-            Array.Copy(innerBytes, 0, readyBytes, containerBytes.Length, innerBytes.Length);
-
-            File.WriteAllBytes(OutputFilePath, readyBytes);
+            try
+            {
+                await Task.Run(() => MainModel.RarJpeg(ContainerPath, ArchivePath, ReadyPath));
+            }
+            catch (Exception exception)
+            {
+                MessageBox.Show($"Error occured: {exception.Message}. Inner exception: {exception.InnerException?.Message}.");
+                IsGridEnabled = true;
+                return;
+            }
 
             MessageBox.Show("Done!");
 
-            //todo unblock interface
+            IsGridEnabled = true;
         }
 
         #endregion
 
         #region Other
 
-        private bool CheckData()
+        private void CheckData()
         {
-            //Check container file
-            if (string.IsNullOrWhiteSpace(ContainerFilePath) || !File.Exists(ContainerFilePath))
-            {
-                MessageBox.Show("Container file doesn't exist or path string is empty.");
-                return false;
-            }
-            //if (string.IsNullOrWhiteSpace(Path.GetExtension(ContainerFilePath)))
-            //{
-            //    MessageBox.Show("Warning! Container file doesn't have extension.");
-            //}
+            #region Check container file
 
-            //Check archive
-            if (string.IsNullOrWhiteSpace(ArchiveFilePath) || !File.Exists(ArchiveFilePath))
-            {
-                MessageBox.Show("Archive doesn't exist or path string is empty.");
-                return false;
-            }
-            //todo check if archive or not
-            //if (string.IsNullOrWhiteSpace(Path.GetExtension(ContainerFilePath)))
-            //{
-            //    MessageBox.Show("Warning! Container file doesn't have extension.");
-            //}
+            if (string.IsNullOrWhiteSpace(ContainerPath) || !File.Exists(ContainerPath))
+                throw new Exception("Container file doesn't exist or path string is empty.");
 
-            //Check output file
-            if (string.IsNullOrWhiteSpace(OutputFilePath))
+            #endregion
+
+            #region Check archive
+
+            if (string.IsNullOrWhiteSpace(ArchivePath) || !File.Exists(ArchivePath))
+                throw new Exception("Archive doesn't exist or path string is empty.");
+            try
             {
-                MessageBox.Show("Output file's path is empty.");
-                return false;
+                ZipFile zipFile = new ZipFile(ArchivePath);
+                if (!zipFile.TestArchive(true))
+                    throw new Exception("Archive is corrupted.");
             }
-            string previousOutputFilePath = OutputFilePath;
-            OutputFilePath = $"{OutputFilePath}{Path.GetExtension(ArchiveFilePath)}" +
-                             $"{Path.GetExtension(ContainerFilePath)}";
-            if (File.Exists(OutputFilePath))
+            catch (Exception)
             {
-                MessageBox.Show("Output file is already exists.");
-                OutputFilePath = previousOutputFilePath;
-                return false;
+                throw new Exception("Selected archive file is corrupted or not an archive.");
             }
 
-            return true;
+            #endregion
+
+            #region Check output file
+
+            if (string.IsNullOrWhiteSpace(ReadyPath))
+                throw new Exception("Output file's path is empty.");
+            ReadyPath = $"{ReadyPath}{Path.GetExtension(ArchivePath)}" +
+                             $"{Path.GetExtension(ContainerPath)}";
+            if (File.Exists(ReadyPath))
+                throw new Exception("Output file is already exists.");
+
+            #endregion
         }
 
         #endregion
