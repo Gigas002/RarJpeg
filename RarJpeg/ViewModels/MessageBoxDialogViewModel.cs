@@ -1,6 +1,7 @@
 ﻿using System.Windows;
 using Caliburn.Micro;
 using MaterialDesignThemes.Wpf;
+using RarJpeg.Properties;
 
 namespace RarJpeg.ViewModels
 {
@@ -10,11 +11,11 @@ namespace RarJpeg.ViewModels
 
         #region UI
 
-        public string CopyToClipboardToolTip { get; } = Enums.MessageBoxDialogViewModel.CopyToClipboardToolTip;
+        public string CopyToClipboardToolTip { get; } = Strings.CopyToClipboardToolTip;
 
-        public string AcceptButtonContent { get; } = Enums.MessageBoxDialogViewModel.AcceptButtonContent;
+        public string AcceptButtonContent { get; } = Strings.AcceptButtonContent;
 
-        public string CancelButtonContent { get; } = Enums.MessageBoxDialogViewModel.CancelButtonContent;
+        public string CancelButtonContent { get; } = Strings.CancelButtonContent;
 
         #endregion
 

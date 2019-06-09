@@ -117,4 +117,52 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="AcceptButtonContent" xml:space="preserve">
+    <value>Принять</value>
+  </data>
+  <data name="ArchiveCorrupted" xml:space="preserve">
+    <value>Выбранный архив поврежден, или не является архивом.</value>
+  </data>
+  <data name="ArchiveExistEmpty" xml:space="preserve">
+    <value>Архив не существует, либо строка пути пустая.</value>
+  </data>
+  <data name="ArchiveExtension" xml:space="preserve">
+    <value>У выбранного архива отсутствует расширение.</value>
+  </data>
+  <data name="ArchiveHint" xml:space="preserve">
+    <value>Выберите архив</value>
+  </data>
+  <data name="CancelButtonContent" xml:space="preserve">
+    <value>Отмена</value>
+  </data>
+  <data name="ContainerExistEmpty" xml:space="preserve">
+    <value>Файл-контейнер не существует, либо строка пути пустая.</value>
+  </data>
+  <data name="ContainerExtension" xml:space="preserve">
+    <value>У выбранного файла-контейнера отсутствует расширение. Продолжить?</value>
+  </data>
+  <data name="ContainerHint" xml:space="preserve">
+    <value>Выберите файл-контейнер</value>
+  </data>
+  <data name="CopyToClipboardToolTip" xml:space="preserve">
+    <value>Скопировать в буфер</value>
+  </data>
+  <data name="Done" xml:space="preserve">
+    <value>Готово!</value>
+  </data>
+  <data name="ReadyEmpty" xml:space="preserve">
+    <value>Строка пути к готовому файлу пустая.</value>
+  </data>
+  <data name="ReadyExist" xml:space="preserve">
+    <value>Готовый файл по указанному пути уже существует.</value>
+  </data>
+  <data name="ReadyExtension" xml:space="preserve">
+    <value>Строка пути к готовому файлу содержить расширение. Пожалуйста, введите имя файла без расширения.</value>
+  </data>
+  <data name="ReadyHint" xml:space="preserve">
+    <value>Выберите путь к готовому файлу</value>
+  </data>
+  <data name="Start" xml:space="preserve">
+    <value>Старт</value>
+  </data>
 </root>

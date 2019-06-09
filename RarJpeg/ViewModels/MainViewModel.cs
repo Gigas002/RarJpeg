@@ -7,6 +7,7 @@ using ICSharpCode.SharpZipLib.Zip;
 using MaterialDesignThemes.Wpf;
 using Ookii.Dialogs.Wpf;
 using RarJpeg.Models;
+using RarJpeg.Properties;
 
 // ReSharper disable MemberCanBePrivate.Global
 // ReSharper disable UnusedMember.Global
@@ -16,21 +17,23 @@ namespace RarJpeg.ViewModels
 {
     internal class MainViewModel : PropertyChangedBase
     {
-        //todo localize strings
         //todo xml-doc
         //todo material dialogs
+        //todo add tests
+        //todo take a look at project settings
+        //todo take a look at publish
 
         #region Properties
 
         #region UI
 
-        public string ContainerHint { get; } = Enums.MainViewModel.ContainerHint;
+        public string ContainerHint { get; } = Strings.ContainerHint;
 
-        public string ArchiveHint { get; } = Enums.MainViewModel.ArchiveHint;
+        public string ArchiveHint { get; } = Strings.ArchiveHint;
 
-        public string ReadyHint { get; } = Enums.MainViewModel.ReadyHint;
+        public string ReadyHint { get; } = Strings.ReadyHint;
 
-        public string Start { get; } = Enums.MainViewModel.Start;
+        public string Start { get; } = Strings.Start;
 
         public string Copyright { get; } = Enums.MainViewModel.Copyright;
 
@@ -197,7 +200,7 @@ namespace RarJpeg.ViewModels
             IsGridEnabled = true;
             _readyPath = ReadyPath;
             if (isSuccessful)
-                await DialogHost.Show(new MessageBoxDialogViewModel(Enums.MainViewModel.Done));
+                await DialogHost.Show(new MessageBoxDialogViewModel(Strings.Done));
         }
 
         private async ValueTask CheckData()
@@ -205,11 +208,11 @@ namespace RarJpeg.ViewModels
             #region Check container file
 
             if (string.IsNullOrWhiteSpace(ContainerPath) || !File.Exists(ContainerPath))
-                throw new Exception(Enums.MainViewModel.ContainerExistEmpty);
+                throw new Exception(Strings.ContainerExistEmpty);
             if (string.IsNullOrWhiteSpace(Path.GetExtension(ContainerPath)))
             {
                 if (!(bool)
-                        await DialogHost.Show(new MessageBoxDialogViewModel(Enums.MainViewModel.ContainerExtension,
+                        await DialogHost.Show(new MessageBoxDialogViewModel(Strings.ContainerExtension,
                                                                             Visibility.Visible)))
                     throw new Exception(string.Empty);
             }
@@ -219,24 +222,24 @@ namespace RarJpeg.ViewModels
             #region Check archive
 
             if (string.IsNullOrWhiteSpace(ArchivePath) || !File.Exists(ArchivePath))
-                throw new Exception(Enums.MainViewModel.ArchiveExistEmpty);
+                throw new Exception(Strings.ArchiveExistEmpty);
             if (string.IsNullOrWhiteSpace(Path.GetExtension(ArchivePath)))
-                throw new Exception(Enums.MainViewModel.ArchiveExtension);
+                throw new Exception(Strings.ArchiveExtension);
             if (!new ZipFile(ArchivePath).TestArchive(true))
-                throw new Exception(Enums.MainViewModel.ArchiveCorrupted);
+                throw new Exception(Strings.ArchiveCorrupted);
 
             #endregion
 
             #region Check ready file
 
             if (string.IsNullOrWhiteSpace(ReadyPath))
-                throw new Exception(Enums.MainViewModel.ReadyEmpty);
+                throw new Exception(Strings.ReadyEmpty);
             if (!string.IsNullOrWhiteSpace(Path.GetExtension(ReadyPath)))
-                throw new Exception(Enums.MainViewModel.ReadyExtension);
+                throw new Exception(Strings.ReadyExtension);
             _readyPath = $"{ReadyPath}{Path.GetExtension(ArchivePath)}" +
                              $"{Path.GetExtension(ContainerPath)}";
             if (File.Exists(ReadyPath))
-                throw new Exception(Enums.MainViewModel.ReadyExist);
+                throw new Exception(Strings.ReadyExist);
 
             #endregion
         }

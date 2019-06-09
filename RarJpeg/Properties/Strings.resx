@@ -117,4 +117,52 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="AcceptButtonContent" xml:space="preserve">
+    <value>Accept</value>
+  </data>
+  <data name="ArchiveCorrupted" xml:space="preserve">
+    <value>Archive is corrupted or not an archive.</value>
+  </data>
+  <data name="ArchiveExistEmpty" xml:space="preserve">
+    <value>Archive doesn't exist or path string is empty.</value>
+  </data>
+  <data name="ArchiveExtension" xml:space="preserve">
+    <value>Archive doesn't contain extension.</value>
+  </data>
+  <data name="ArchiveHint" xml:space="preserve">
+    <value>Select archive</value>
+  </data>
+  <data name="CancelButtonContent" xml:space="preserve">
+    <value>Cancel</value>
+  </data>
+  <data name="ContainerExistEmpty" xml:space="preserve">
+    <value>Container file doesn't exist or path string is empty.</value>
+  </data>
+  <data name="ContainerExtension" xml:space="preserve">
+    <value>Selected container file doesn't have extension. Continue?</value>
+  </data>
+  <data name="ContainerHint" xml:space="preserve">
+    <value>Select container file</value>
+  </data>
+  <data name="CopyToClipboardToolTip" xml:space="preserve">
+    <value>Copy to clipboard</value>
+  </data>
+  <data name="Done" xml:space="preserve">
+    <value>Done!</value>
+  </data>
+  <data name="ReadyEmpty" xml:space="preserve">
+    <value>Ready file's path is empty.</value>
+  </data>
+  <data name="ReadyExist" xml:space="preserve">
+    <value>Ready file is already exists.</value>
+  </data>
+  <data name="ReadyExtension" xml:space="preserve">
+    <value>Ready file contain extension. Please, enter file's name without extension.</value>
+  </data>
+  <data name="ReadyHint" xml:space="preserve">
+    <value>Select ready file's path</value>
+  </data>
+  <data name="Start" xml:space="preserve">
+    <value>Start</value>
+  </data>
 </root>
