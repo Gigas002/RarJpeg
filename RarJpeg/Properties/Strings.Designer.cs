@@ -162,36 +162,36 @@ namespace RarJpeg.Properties {
         /// <summary>
         ///   Looks up a localized string similar to Ready file&apos;s path is empty..
         /// </summary>
-        internal static string ReadyEmpty {
+        internal static string OutputEmpty {
             get {
-                return ResourceManager.GetString("ReadyEmpty", resourceCulture);
+                return ResourceManager.GetString("OutputEmpty", resourceCulture);
             }
         }
         
         /// <summary>
         ///   Looks up a localized string similar to Ready file is already exists..
         /// </summary>
-        internal static string ReadyExist {
+        internal static string OutputExist {
             get {
-                return ResourceManager.GetString("ReadyExist", resourceCulture);
+                return ResourceManager.GetString("OutputExist", resourceCulture);
             }
         }
         
         /// <summary>
         ///   Looks up a localized string similar to Ready file contain extension. Please, enter file&apos;s name without extension..
         /// </summary>
-        internal static string ReadyExtension {
+        internal static string OutputExtension {
             get {
-                return ResourceManager.GetString("ReadyExtension", resourceCulture);
+                return ResourceManager.GetString("OutputExtension", resourceCulture);
             }
         }
         
         /// <summary>
         ///   Looks up a localized string similar to Select ready file&apos;s path.
         /// </summary>
-        internal static string ReadyHint {
+        internal static string OutputHint {
             get {
-                return ResourceManager.GetString("ReadyHint", resourceCulture);
+                return ResourceManager.GetString("OutputHint", resourceCulture);
             }
         }
         

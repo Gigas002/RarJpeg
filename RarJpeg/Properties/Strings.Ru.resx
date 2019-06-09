@@ -150,16 +150,16 @@
   <data name="Done" xml:space="preserve">
     <value>Готово!</value>
   </data>
-  <data name="ReadyEmpty" xml:space="preserve">
+  <data name="OutputEmpty" xml:space="preserve">
     <value>Строка пути к готовому файлу пустая.</value>
   </data>
-  <data name="ReadyExist" xml:space="preserve">
+  <data name="OutputExist" xml:space="preserve">
     <value>Готовый файл по указанному пути уже существует.</value>
   </data>
-  <data name="ReadyExtension" xml:space="preserve">
+  <data name="OutputExtension" xml:space="preserve">
     <value>Строка пути к готовому файлу содержить расширение. Пожалуйста, введите имя файла без расширения.</value>
   </data>
-  <data name="ReadyHint" xml:space="preserve">
+  <data name="OutputHint" xml:space="preserve">
     <value>Выберите путь к готовому файлу</value>
   </data>
   <data name="Start" xml:space="preserve">

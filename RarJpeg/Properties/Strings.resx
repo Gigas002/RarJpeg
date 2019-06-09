@@ -150,16 +150,16 @@
   <data name="Done" xml:space="preserve">
     <value>Done!</value>
   </data>
-  <data name="ReadyEmpty" xml:space="preserve">
+  <data name="OutputEmpty" xml:space="preserve">
     <value>Ready file's path is empty.</value>
   </data>
-  <data name="ReadyExist" xml:space="preserve">
+  <data name="OutputExist" xml:space="preserve">
     <value>Ready file is already exists.</value>
   </data>
-  <data name="ReadyExtension" xml:space="preserve">
+  <data name="OutputExtension" xml:space="preserve">
     <value>Ready file contain extension. Please, enter file's name without extension.</value>
   </data>
-  <data name="ReadyHint" xml:space="preserve">
+  <data name="OutputHint" xml:space="preserve">
     <value>Select ready file's path</value>
   </data>
   <data name="Start" xml:space="preserve">

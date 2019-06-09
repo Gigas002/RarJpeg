@@ -1,7 +1,6 @@
 ﻿using System;
 using System.IO;
 using System.Threading.Tasks;
-using System.Windows;
 using Caliburn.Micro;
 using ICSharpCode.SharpZipLib.Zip;
 using MaterialDesignThemes.Wpf;
@@ -20,8 +19,7 @@ namespace RarJpeg.ViewModels
     /// </summary>
     internal class MainViewModel : PropertyChangedBase
     {
-        //todo rename ready to output
-        //todo material dialogs
+        //todo material file/folder dialogs
         //todo add tests
         //todo take a look at project settings
         //todo take a look at publish
@@ -43,7 +41,7 @@ namespace RarJpeg.ViewModels
         /// <summary>
         /// String, that displays on output's path textbox as hint.
         /// </summary>
-        public string ReadyHint { get; } = Strings.ReadyHint;
+        public string OutputHint { get; } = Strings.OutputHint;
 
         /// <summary>
         /// Start button's text.
@@ -70,7 +68,7 @@ namespace RarJpeg.ViewModels
 
         private string _archivePath;
 
-        private string _readyPath;
+        private string _outputPath;
 
         #endregion
 
@@ -116,13 +114,13 @@ namespace RarJpeg.ViewModels
         /// <summary>
         /// Output file's path.
         /// </summary>
-        public string ReadyPath
+        public string OutputPath
         {
-            get => _readyPath;
+            get => _outputPath;
             set
             {
-                _readyPath = value;
-                NotifyOfPropertyChange(() => ReadyPath);
+                _outputPath = value;
+                NotifyOfPropertyChange(() => OutputPath);
             }
         }
 
@@ -135,7 +133,7 @@ namespace RarJpeg.ViewModels
             IsGridEnabled = true;
             ContainerPath = string.Empty;
             ArchivePath = string.Empty;
-            ReadyPath = string.Empty;
+            OutputPath = string.Empty;
         }
 
         #endregion
@@ -179,12 +177,12 @@ namespace RarJpeg.ViewModels
         /// <summary>
         /// Button for selecting output file's path through Windows file explorer.
         /// </summary>
-        public async ValueTask ReadyPathButton()
+        public async ValueTask OutputPathButton()
         {
             try
             {
                 VistaSaveFileDialog saveFileDialog = new VistaSaveFileDialog();
-                ReadyPath = saveFileDialog.ShowDialog() == true ? saveFileDialog.FileName : ReadyPath;
+                OutputPath = saveFileDialog.ShowDialog() == true ? saveFileDialog.FileName : OutputPath;
             }
             catch (Exception exception)
             {
@@ -204,7 +202,7 @@ namespace RarJpeg.ViewModels
             bool isSuccessful = true;
             try
             {
-                await Task.Run(() => MainModel.RarJpeg(ContainerPath, ArchivePath, _readyPath));
+                await Task.Run(() => MainModel.RarJpeg(ContainerPath, ArchivePath, _outputPath));
             }
             catch (Exception exception)
             {
@@ -252,13 +250,13 @@ namespace RarJpeg.ViewModels
         }
 
         /// <summary>
-        /// Enable UI and return inner <see cref="ReadyPath"/> to correct value.
+        /// Enable UI and return inner <see cref="OutputPath"/> to correct value.
         /// </summary>
         /// <param name="isSuccessful">Was the task successful?</param>
         private async ValueTask CancelWork(bool isSuccessful)
         {
             IsGridEnabled = true;
-            _readyPath = ReadyPath;
+            _outputPath = OutputPath;
             if (isSuccessful) await DialogHost.Show(new MessageBoxDialogViewModel(Strings.Done));
         }
 
@@ -302,23 +300,23 @@ namespace RarJpeg.ViewModels
 
             #endregion
 
-            #region Check ready file
+            #region Check output file
 
             //Check if output file's path isn't empty.
-            if (string.IsNullOrWhiteSpace(ReadyPath))
-                throw new Exception(Strings.ReadyEmpty);
+            if (string.IsNullOrWhiteSpace(OutputPath))
+                throw new Exception(Strings.OutputEmpty);
 
             //Check if output file's path contain extension.
-            if (!string.IsNullOrWhiteSpace(Path.GetExtension(ReadyPath)))
-                throw new Exception(Strings.ReadyExtension);
+            if (!string.IsNullOrWhiteSpace(Path.GetExtension(OutputPath)))
+                throw new Exception(Strings.OutputExtension);
 
-            //Change inner ReadyPath's value: adding needed extensions.
-            _readyPath = $"{ReadyPath}{Path.GetExtension(ArchivePath)}" +
+            //Change inner OutputPath's value: adding needed extensions.
+            _outputPath = $"{OutputPath}{Path.GetExtension(ArchivePath)}" +
                              $"{Path.GetExtension(ContainerPath)}";
 
             //Check if output file already exists.
-            if (File.Exists(_readyPath))
-                throw new Exception(Strings.ReadyExist);
+            if (File.Exists(_outputPath))
+                throw new Exception(Strings.OutputExist);
 
             #endregion
         }

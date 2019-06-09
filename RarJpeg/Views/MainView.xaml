@@ -105,17 +105,17 @@
                 <TextBox Grid.Row="4" Grid.Column="0"
                      VerticalAlignment="Stretch"
                      VerticalContentAlignment="Center"
-                     Text="{Binding ReadyPath}"
+                     Text="{Binding OutputPath}"
                      Style="{StaticResource MaterialDesignFloatingHintTextBox}">
                     <materialDesign:HintAssist.Hint>
                         <StackPanel Orientation="Horizontal">
                             <materialDesign:PackIcon Kind="File"/>
-                            <TextBlock Text="{Binding ReadyHint}"/>
+                            <TextBlock Text="{Binding OutputHint}"/>
                         </StackPanel>
                     </materialDesign:HintAssist.Hint>
                 </TextBox>
                 <Button Grid.Row="4" Grid.Column="2"
-                    cal:Message.Attach="ReadyPathButton"
+                    cal:Message.Attach="OutputPathButton"
                     Content="{materialDesign:PackIcon File}"/>
 
                 <!-- Grid.Row="6" -->
