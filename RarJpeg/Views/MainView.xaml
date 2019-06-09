@@ -31,7 +31,7 @@
             </DataTemplate>
         </ResourceDictionary>
     </controls:MetroWindow.Resources>
-    <materialDesign:DialogHost Identifier="dialogHost">
+    <materialDesign:DialogHost>
         <Grid>
             <!-- App borders -->
             <Grid.RowDefinitions>
@@ -44,9 +44,11 @@
                 <ColumnDefinition Width="*"/>
                 <ColumnDefinition Width="10"/>
             </Grid.ColumnDefinitions>
+            
             <!-- Inner grid with buttons -->
             <Grid Grid.Row="1" Grid.Column="1"
               IsEnabled="{Binding IsGridEnabled}">
+                
                 <!-- Buttons zones and borders -->
                 <Grid.RowDefinitions>
                     <RowDefinition Height="*"/>
@@ -65,6 +67,7 @@
                     <ColumnDefinition Width="Auto"/>
                 </Grid.ColumnDefinitions>
 
+                <!-- Grid.Row="0" -->
                 <TextBox Grid.Row="0" Grid.Column="0"
                      VerticalAlignment="Stretch"
                      VerticalContentAlignment="Center"
@@ -81,6 +84,7 @@
                     cal:Message.Attach="SelectContainerButton"
                     Content="{materialDesign:PackIcon File}"/>
 
+                <!-- Grid.Row="2" -->
                 <TextBox Grid.Row="2" Grid.Column="0"
                      VerticalAlignment="Stretch"
                      VerticalContentAlignment="Center"
@@ -97,6 +101,7 @@
                     cal:Message.Attach="SelectArchiveButton"
                     Content="{materialDesign:PackIcon File}"/>
 
+                <!-- Grid.Row="4" -->
                 <TextBox Grid.Row="4" Grid.Column="0"
                      VerticalAlignment="Stretch"
                      VerticalContentAlignment="Center"
@@ -113,11 +118,13 @@
                     cal:Message.Attach="ReadyPathButton"
                     Content="{materialDesign:PackIcon File}"/>
 
+                <!-- Grid.Row="6" -->
                 <Button Grid.Row="6" Grid.Column="0"
                     Grid.ColumnSpan="3"
                     cal:Message.Attach="StartButton"
                     Content="{Binding Start}"/>
 
+                <!-- Grid.Row="8" -->
                 <TextBlock Grid.Row="8" Grid.Column="0"
                        TextAlignment="Left"
                        Text="{Binding Copyright}"/>

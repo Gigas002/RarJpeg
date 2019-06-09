@@ -5,11 +5,11 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:materialDesign="clr-namespace:MaterialDesignThemes.Wpf;assembly=MaterialDesignThemes.Wpf"
              xmlns:cal="http://www.caliburnproject.org"
+             mc:Ignorable="d"
              Background="{DynamicResource MaterialDesignPaper}"
              FontFamily="{DynamicResource MaterialDesignFont}"
              Height="250"
-             Width="400"
-             mc:Ignorable="d">
+             Width="400">
     <UserControl.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
@@ -25,6 +25,7 @@
         </ResourceDictionary>
     </UserControl.Resources>
     <Grid>
+        <!-- Message box's borders -->
         <Grid.RowDefinitions>
             <RowDefinition Height="10"/>
             <RowDefinition Height="*"/>
@@ -35,12 +36,16 @@
             <ColumnDefinition Width="*"/>
             <ColumnDefinition Width="10"/>
         </Grid.ColumnDefinitions>
+
+        <!-- Inner grid -->
         <Grid Row="1" Column="1">
             <Grid.RowDefinitions>
                 <RowDefinition Height="*"/>
                 <RowDefinition Height="10"/>
                 <RowDefinition Height="Auto"/>
             </Grid.RowDefinitions>
+
+            <!-- Grid.Row="0" -->
             <ScrollViewer Grid.Row="0" 
                           VerticalScrollBarVisibility="Auto" 
                           Padding="3">
@@ -52,6 +57,7 @@
                            Text="{Binding Message}"/>
             </ScrollViewer>
 
+            <!-- Grid.Row="2" -->
             <Grid Grid.Row="2">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="Auto"/>

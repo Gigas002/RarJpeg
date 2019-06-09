@@ -3,8 +3,17 @@ using System.IO;
 
 namespace RarJpeg.Models
 {
+    /// <summary>
+    /// Class with main logics for <see cref="ViewModels.MainViewModel"/> class.
+    /// </summary>
     internal static class MainModel
     {
+        /// <summary>
+        /// Creates .{archiveExtension}.{containerExtension} output file.
+        /// </summary>
+        /// <param name="containerFilePath">Full path to the container file.</param>
+        /// <param name="archivePath">Full path to the archive.</param>
+        /// <param name="outputFilePath">Full path to the output file.</param>
         internal static void RarJpeg(string containerFilePath, string archivePath, string outputFilePath)
         {
             byte[] containerBytes = File.ReadAllBytes(containerFilePath);
