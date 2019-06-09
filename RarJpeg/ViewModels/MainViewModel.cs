@@ -19,11 +19,6 @@ namespace RarJpeg.ViewModels
     /// </summary>
     internal class MainViewModel : PropertyChangedBase
     {
-        //todo material file/folder dialogs
-        //todo add tests
-        //todo take a look at project settings
-        //todo take a look at publish
-
         #region Properties
 
         #region UI
