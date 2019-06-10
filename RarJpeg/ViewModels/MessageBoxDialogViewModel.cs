@@ -31,6 +31,10 @@ namespace RarJpeg.ViewModels
         /// </summary>
         public string CancelButtonContent { get; } = Strings.CancelButtonContent;
 
+        public int Width { get; } = 600;
+
+        public int Height { get; } = 400;
+
         #endregion
 
         #region Backing fields

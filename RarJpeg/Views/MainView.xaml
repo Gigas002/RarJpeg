@@ -31,7 +31,7 @@
             </DataTemplate>
         </ResourceDictionary>
     </controls:MetroWindow.Resources>
-    <materialDesign:DialogHost>
+    <materialDesign:DialogHost Identifier="{Binding DialogHostId}">
         <Grid>
             <!-- App borders -->
             <Grid.RowDefinitions>

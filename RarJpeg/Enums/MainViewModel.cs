@@ -19,6 +19,11 @@ namespace RarJpeg.Enums
         /// </summary>
         internal static string Version { get; } = Assembly.GetExecutingAssembly().GetName().Version.ToString();
 
+        /// <summary>
+        /// Identifier of DialogHost on <see cref="Views.MainView"/>.
+        /// </summary>
+        internal const string DialogHostId = "DialogHost";
+
         #endregion
     }
 }

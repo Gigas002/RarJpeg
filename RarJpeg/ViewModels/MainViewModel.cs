@@ -3,8 +3,8 @@ using System.IO;
 using System.Threading.Tasks;
 using Caliburn.Micro;
 using ICSharpCode.SharpZipLib.Zip;
+using MaterialDesignExtensions.Controls;
 using MaterialDesignThemes.Wpf;
-using Ookii.Dialogs.Wpf;
 using RarJpeg.Models;
 using RarJpeg.Properties;
 
@@ -19,6 +19,8 @@ namespace RarJpeg.ViewModels
     /// </summary>
     internal class MainViewModel : PropertyChangedBase
     {
+        //todo make material dialogs dark
+
         #region Properties
 
         #region UI
@@ -52,6 +54,11 @@ namespace RarJpeg.ViewModels
         /// Info about current version. Pattern: {MAJOR}.{MINOR}.{PATCH}.{BUILD}
         /// </summary>
         public string Version { get; } = Enums.MainViewModel.Version;
+
+        /// <summary>
+        /// Identifier of DialogHost on <see cref="Views.MainView"/>.
+        /// </summary>
+        public string DialogHostId { get; } = Enums.MainViewModel.DialogHostId;
 
         #endregion
 
@@ -144,8 +151,15 @@ namespace RarJpeg.ViewModels
         {
             try
             {
-                VistaOpenFileDialog openFileDialog = new VistaOpenFileDialog();
-                ContainerPath = openFileDialog.ShowDialog() == true ? openFileDialog.FileName : ContainerPath;
+                OpenFileDialogArguments dialogArguments = new OpenFileDialogArguments
+                {
+                    Width = Enums.Dialog.Width,
+                    Height = Enums.Dialog.Height,
+                };
+
+                OpenFileDialogResult dialogResult = await OpenFileDialog.ShowDialogAsync(Enums.MainViewModel.DialogHostId, dialogArguments);
+
+                ContainerPath = dialogResult.Canceled ? ContainerPath : dialogResult.FileInfo.FullName;
             }
             catch (Exception exception)
             {
@@ -160,8 +174,15 @@ namespace RarJpeg.ViewModels
         {
             try
             {
-                VistaOpenFileDialog openFileDialog = new VistaOpenFileDialog();
-                ArchivePath = openFileDialog.ShowDialog() == true ? openFileDialog.FileName : ArchivePath;
+                OpenFileDialogArguments dialogArguments = new OpenFileDialogArguments
+                {
+                    Width = Enums.Dialog.Width,
+                    Height = Enums.Dialog.Height,
+                };
+
+                OpenFileDialogResult dialogResult = await OpenFileDialog.ShowDialogAsync(Enums.MainViewModel.DialogHostId, dialogArguments);
+
+                ArchivePath = dialogResult.Canceled ? ArchivePath : dialogResult.FileInfo.FullName;
             }
             catch (Exception exception)
             {
@@ -176,8 +197,15 @@ namespace RarJpeg.ViewModels
         {
             try
             {
-                VistaSaveFileDialog saveFileDialog = new VistaSaveFileDialog();
-                OutputPath = saveFileDialog.ShowDialog() == true ? saveFileDialog.FileName : OutputPath;
+                SaveFileDialogArguments dialogArguments = new SaveFileDialogArguments
+                {
+                    Width = Enums.Dialog.Width,
+                    Height = Enums.Dialog.Height
+                };
+
+                SaveFileDialogResult dialogResult = await SaveFileDialog.ShowDialogAsync(Enums.MainViewModel.DialogHostId, dialogArguments);
+
+                OutputPath = dialogResult.Canceled ? OutputPath : dialogResult.FileInfo.FullName;
             }
             catch (Exception exception)
             {
