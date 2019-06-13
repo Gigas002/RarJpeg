@@ -23,7 +23,7 @@ Previous versions can be found on [releases](https://github.com/Gigas002/RarJpeg
 
 Just select any image as container and any archive as… well, archive. Then, select the output file’s path (do not write any extensions here please) and press **Start**.
 
-![](Screenshots\MainPage.png)
+![](Screenshots/MainPage.png)
 
 ## Dependencies
 
