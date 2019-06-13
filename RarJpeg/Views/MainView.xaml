@@ -75,14 +75,14 @@
                      Style="{StaticResource MaterialDesignFloatingHintTextBox}">
                     <materialDesign:HintAssist.Hint>
                         <StackPanel Orientation="Horizontal">
-                            <materialDesign:PackIcon Kind="File"/>
+                            <materialDesign:PackIcon Kind="Image"/>
                             <TextBlock Text="{Binding ContainerHint}"/>
                         </StackPanel>
                     </materialDesign:HintAssist.Hint>
                 </TextBox>
                 <Button Grid.Row="0" Grid.Column="2"
                     cal:Message.Attach="SelectContainerButton"
-                    Content="{materialDesign:PackIcon File}"/>
+                    Content="{materialDesign:PackIcon Image}"/>
 
                 <!-- Grid.Row="2" -->
                 <TextBox Grid.Row="2" Grid.Column="0"
@@ -92,14 +92,14 @@
                      Style="{StaticResource MaterialDesignFloatingHintTextBox}">
                     <materialDesign:HintAssist.Hint>
                         <StackPanel Orientation="Horizontal">
-                            <materialDesign:PackIcon Kind="File"/>
+                            <materialDesign:PackIcon Kind="Archive"/>
                             <TextBlock Text="{Binding ArchiveHint}"/>
                         </StackPanel>
                     </materialDesign:HintAssist.Hint>
                 </TextBox>
                 <Button Grid.Row="2" Grid.Column="2"
                     cal:Message.Attach="SelectArchiveButton"
-                    Content="{materialDesign:PackIcon File}"/>
+                    Content="{materialDesign:PackIcon Archive}"/>
 
                 <!-- Grid.Row="4" -->
                 <TextBox Grid.Row="4" Grid.Column="0"

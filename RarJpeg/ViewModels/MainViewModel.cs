@@ -20,7 +20,6 @@ namespace RarJpeg.ViewModels
     internal class MainViewModel : PropertyChangedBase
     {
         //todo make material dialogs dark
-        //todo create README.md and LICENSE
 
         #region Properties
 

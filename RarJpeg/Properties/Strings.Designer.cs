@@ -160,7 +160,7 @@ namespace RarJpeg.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Ready file&apos;s path is empty..
+        ///   Looks up a localized string similar to Output file&apos;s path is empty..
         /// </summary>
         internal static string OutputEmpty {
             get {
@@ -169,7 +169,7 @@ namespace RarJpeg.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Ready file is already exists..
+        ///   Looks up a localized string similar to Output file is already exists..
         /// </summary>
         internal static string OutputExist {
             get {
@@ -178,7 +178,7 @@ namespace RarJpeg.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Ready file contain extension. Please, enter file&apos;s name without extension..
+        ///   Looks up a localized string similar to Output file contain extension. Please, enter file&apos;s name without extension..
         /// </summary>
         internal static string OutputExtension {
             get {
@@ -187,7 +187,7 @@ namespace RarJpeg.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Select ready file&apos;s path.
+        ///   Looks up a localized string similar to Select output file&apos;s path.
         /// </summary>
         internal static string OutputHint {
             get {
