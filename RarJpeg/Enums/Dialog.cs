@@ -8,11 +8,11 @@
         /// <summary>
         /// Dialog's width.
         /// </summary>
-        internal const int Width = 600;
+        internal const int Width = 400;
 
         /// <summary>
         /// Dialog's height.
         /// </summary>
-        internal const int Height = 400;
+        internal const int Height = 250;
     }
 }

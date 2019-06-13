@@ -20,6 +20,7 @@ namespace RarJpeg.ViewModels
     internal class MainViewModel : PropertyChangedBase
     {
         //todo make material dialogs dark
+        //todo create README.md and LICENSE
 
         #region Properties
 
@@ -151,14 +152,8 @@ namespace RarJpeg.ViewModels
         {
             try
             {
-                OpenFileDialogArguments dialogArguments = new OpenFileDialogArguments
-                {
-                    Width = Enums.Dialog.Width,
-                    Height = Enums.Dialog.Height,
-                };
-
+                OpenFileDialogArguments dialogArguments = new OpenFileDialogArguments();
                 OpenFileDialogResult dialogResult = await OpenFileDialog.ShowDialogAsync(Enums.MainViewModel.DialogHostId, dialogArguments);
-
                 ContainerPath = dialogResult.Canceled ? ContainerPath : dialogResult.FileInfo.FullName;
             }
             catch (Exception exception)
@@ -174,14 +169,8 @@ namespace RarJpeg.ViewModels
         {
             try
             {
-                OpenFileDialogArguments dialogArguments = new OpenFileDialogArguments
-                {
-                    Width = Enums.Dialog.Width,
-                    Height = Enums.Dialog.Height,
-                };
-
+                OpenFileDialogArguments dialogArguments = new OpenFileDialogArguments();
                 OpenFileDialogResult dialogResult = await OpenFileDialog.ShowDialogAsync(Enums.MainViewModel.DialogHostId, dialogArguments);
-
                 ArchivePath = dialogResult.Canceled ? ArchivePath : dialogResult.FileInfo.FullName;
             }
             catch (Exception exception)
@@ -197,14 +186,8 @@ namespace RarJpeg.ViewModels
         {
             try
             {
-                SaveFileDialogArguments dialogArguments = new SaveFileDialogArguments
-                {
-                    Width = Enums.Dialog.Width,
-                    Height = Enums.Dialog.Height
-                };
-
+                SaveFileDialogArguments dialogArguments = new SaveFileDialogArguments();
                 SaveFileDialogResult dialogResult = await SaveFileDialog.ShowDialogAsync(Enums.MainViewModel.DialogHostId, dialogArguments);
-
                 OutputPath = dialogResult.Canceled ? OutputPath : dialogResult.FileInfo.FullName;
             }
             catch (Exception exception)

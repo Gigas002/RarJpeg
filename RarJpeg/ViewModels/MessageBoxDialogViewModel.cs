@@ -31,9 +31,9 @@ namespace RarJpeg.ViewModels
         /// </summary>
         public string CancelButtonContent { get; } = Strings.CancelButtonContent;
 
-        public int Width { get; } = 600;
+        public int Width { get; } = Enums.Dialog.Width;
 
-        public int Height { get; } = 400;
+        public int Height { get; } = Enums.Dialog.Height;
 
         #endregion
 
