@@ -3,7 +3,7 @@
     /// <summary>
     /// Defines consts for every dialog in app.
     /// </summary>
-    internal static class Dialog
+    internal static class Dialogs
     {
         /// <summary>
         /// Dialog's width.

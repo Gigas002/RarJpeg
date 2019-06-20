@@ -2,6 +2,7 @@
 using Caliburn.Micro;
 using MaterialDesignThemes.Wpf;
 using RarJpeg.Properties;
+
 // ReSharper disable MemberCanBePrivate.Global
 // ReSharper disable UnusedMember.Global
 
@@ -31,9 +32,15 @@ namespace RarJpeg.ViewModels
         /// </summary>
         public string CancelButtonContent { get; } = Strings.CancelButtonContent;
 
-        public int Width { get; } = Enums.Dialog.Width;
+        /// <summary>
+        /// Dialog's width.
+        /// </summary>
+        public int Width { get; } = Enums.Dialogs.Width;
 
-        public int Height { get; } = Enums.Dialog.Height;
+        /// <summary>
+        /// Dialog's height.
+        /// </summary>
+        public int Height { get; } = Enums.Dialogs.Height;
 
         #endregion
 
@@ -76,20 +83,14 @@ namespace RarJpeg.ViewModels
         #region Constructors
 
         /// <summary>
-        /// Create message box without Cancel button.
-        /// </summary>
-        /// <param name="message">Text, that you want to see on message box.</param>
-        public MessageBoxDialogViewModel(string message) => Message = message;
-
-        /// <summary>
-        /// Create message box with Cancel button.
+        /// Create message box.
         /// </summary>
         /// <param name="message">Text, that you want to see on message box.</param>
         /// <param name="isCancelButtonVisible">Set to <see langword="true"/>, if you want to see Cancel button.</param>
         public MessageBoxDialogViewModel(string message, bool isCancelButtonVisible = false)
         {
             Message = message;
-            CancelButtonVisibility = isCancelButtonVisible ? Visibility.Visible : Visibility.Hidden;
+            CancelButtonVisibility = isCancelButtonVisible ? Visibility.Visible : Visibility.Collapsed;
         }
 
         #endregion

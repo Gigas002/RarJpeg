@@ -117,7 +117,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="Enums\Dialog.cs" />
+    <Compile Include="Enums\Dialogs.cs" />
     <Compile Include="Enums\MainViewModel.cs" />
     <Compile Include="Models\MainModel.cs" />
     <Compile Include="Properties\Strings.Designer.cs">

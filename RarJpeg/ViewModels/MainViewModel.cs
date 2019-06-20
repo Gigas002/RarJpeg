@@ -55,12 +55,12 @@ namespace RarJpeg.ViewModels
         /// </summary>
         public string Version { get; } = Enums.MainViewModel.Version;
 
+        #endregion
+
         /// <summary>
         /// Identifier of DialogHost on <see cref="Views.MainView"/>.
         /// </summary>
         public string DialogHostId { get; } = Enums.MainViewModel.DialogHostId;
-
-        #endregion
 
         #region Backing fields
 
