@@ -5,6 +5,7 @@ using Caliburn.Micro;
 using ICSharpCode.SharpZipLib.Zip;
 using MaterialDesignExtensions.Controls;
 using MaterialDesignThemes.Wpf;
+using RarJpeg.Helpers;
 using RarJpeg.Models;
 using RarJpeg.Properties;
 
@@ -147,57 +148,67 @@ namespace RarJpeg.ViewModels
         /// <summary>
         /// Button for selecting container file through Windows file explorer.
         /// </summary>
+        /// <returns></returns>
         public async ValueTask SelectContainerButton()
         {
             try
             {
-                OpenFileDialogArguments dialogArguments = new OpenFileDialogArguments();
-                OpenFileDialogResult dialogResult = await OpenFileDialog.ShowDialogAsync(Enums.MainViewModel.DialogHostId, dialogArguments);
+                OpenFileDialogResult dialogResult =
+                    await OpenFileDialog.ShowDialogAsync(Enums.MainViewModel.DialogHostId,
+                                                         new OpenFileDialogArguments
+                                                             {CreateNewDirectoryEnabled = true});
                 ContainerPath = dialogResult.Canceled ? ContainerPath : dialogResult.FileInfo.FullName;
             }
             catch (Exception exception)
             {
-                await DialogHost.Show(new MessageBoxDialogViewModel(exception.Message));
+                await ErrorHelper.ShowException(exception);
             }
         }
 
         /// <summary>
         /// Button for selecting archive through Windows file explorer.
         /// </summary>
+        /// <returns></returns>
         public async ValueTask SelectArchiveButton()
         {
             try
             {
-                OpenFileDialogArguments dialogArguments = new OpenFileDialogArguments();
-                OpenFileDialogResult dialogResult = await OpenFileDialog.ShowDialogAsync(Enums.MainViewModel.DialogHostId, dialogArguments);
+                OpenFileDialogResult dialogResult =
+                    await OpenFileDialog.ShowDialogAsync(Enums.MainViewModel.DialogHostId,
+                                                         new OpenFileDialogArguments
+                                                             {CreateNewDirectoryEnabled = true});
                 ArchivePath = dialogResult.Canceled ? ArchivePath : dialogResult.FileInfo.FullName;
             }
             catch (Exception exception)
             {
-                await DialogHost.Show(new MessageBoxDialogViewModel(exception.Message));
+                await ErrorHelper.ShowException(exception);
             }
         }
 
         /// <summary>
         /// Button for selecting output file's path through Windows file explorer.
         /// </summary>
+        /// <returns></returns>
         public async ValueTask OutputPathButton()
         {
             try
             {
-                SaveFileDialogArguments dialogArguments = new SaveFileDialogArguments();
-                SaveFileDialogResult dialogResult = await SaveFileDialog.ShowDialogAsync(Enums.MainViewModel.DialogHostId, dialogArguments);
+                SaveFileDialogResult dialogResult =
+                    await SaveFileDialog.ShowDialogAsync(Enums.MainViewModel.DialogHostId,
+                                                         new SaveFileDialogArguments
+                                                             {CreateNewDirectoryEnabled = true});
                 OutputPath = dialogResult.Canceled ? OutputPath : dialogResult.FileInfo.FullName;
             }
             catch (Exception exception)
             {
-                await DialogHost.Show(new MessageBoxDialogViewModel(exception.Message));
+                await ErrorHelper.ShowException(exception);
             }
         }
 
         /// <summary>
         /// Button for starting the work.
         /// </summary>
+        /// <returns></returns>
         public async ValueTask StartButton()
         {
             //Do some checks before running.
@@ -211,7 +222,7 @@ namespace RarJpeg.ViewModels
             }
             catch (Exception exception)
             {
-                await DialogHost.Show(new MessageBoxDialogViewModel(exception.Message));
+                await ErrorHelper.ShowException(exception);
                 isSuccessful = false;
             }
 
@@ -242,7 +253,7 @@ namespace RarJpeg.ViewModels
                 if (string.IsNullOrWhiteSpace(exception.Message)) return false;
 
                 //Show other errors.
-                await DialogHost.Show(new MessageBoxDialogViewModel(exception.Message));
+                await ErrorHelper.ShowException(exception);
                 return false;
             }
 
@@ -258,6 +269,7 @@ namespace RarJpeg.ViewModels
         /// Enable UI and return inner <see cref="OutputPath"/> to correct value.
         /// </summary>
         /// <param name="isSuccessful">Was the task successful?</param>
+        /// <returns></returns>
         private async ValueTask CancelWork(bool isSuccessful)
         {
             IsGridEnabled = true;

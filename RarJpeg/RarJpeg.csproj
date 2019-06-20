@@ -119,6 +119,7 @@
     </ApplicationDefinition>
     <Compile Include="Enums\Dialogs.cs" />
     <Compile Include="Enums\MainViewModel.cs" />
+    <Compile Include="Helpers\ErrorHelper.cs" />
     <Compile Include="Models\MainModel.cs" />
     <Compile Include="Properties\Strings.Designer.cs">
       <AutoGen>True</AutoGen>
