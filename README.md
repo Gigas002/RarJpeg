@@ -8,7 +8,7 @@ I know, that GUI is kind of useless, since you can do it with one line in consol
 
 ## Current version
 
-You can get stable pre-built binaries here: [![Release](https://img.shields.io/github/release/Gigas002/RarJpeg.svg)](https://github.com/Gigas002/RarJpeg/releases/latest). This project supports [SemVer 2.0.0](https://semver.org/) (template is `{MAJOR}.{MINOR}.{PATCH}.{BUILD}`). 
+You can get stable pre-built binaries here: [![Release](https://img.shields.io/github/release/Gigas002/RarJpeg.svg)](https://github.com/Gigas002/RarJpeg/releases/latest). This project supports [SemVer 2.0.0](https://semver.org/) (template is `{MAJOR}.{MINOR}.{PATCH}.{BUILD}`).
 
 Information about changes since previous releases can be found in [changelog](https://github.com/Gigas002/RarJpeg/blob/master/CHANGELOG.md).
 
@@ -23,7 +23,7 @@ Previous versions can be found on [releases](https://github.com/Gigas002/RarJpeg
 
 Just select any image as container and any archive as… well, archive. Then, select the output file’s path (do not write any extensions here please) and press **Start**.
 
-![](Screenshots/MainPage.png)
+![Main page](Screenshots/MainPage.png)
 
 ## Dependencies
 
