@@ -39,7 +39,7 @@ Just select any image as container and any archive as… well, archive. Then, se
 
 ## Localization
 
-There’s really not much to localize, but feel free to participate. Currently, only `EN-US` and `RU-RU` are supported. All the localizable strings are located into `Strings.rexs`.
+There’s really not much to localize, but feel free to participate. Currently, only **English** and **Russian** are supported. All the localizable strings are located into `Localization/Strings.rexs`.
 
 ## Contributing
 

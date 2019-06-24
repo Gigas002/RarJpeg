@@ -1,7 +1,7 @@
 ﻿using System.Windows;
 using Caliburn.Micro;
 using MaterialDesignThemes.Wpf;
-using RarJpeg.Properties;
+using RarJpeg.Localization;
 
 // ReSharper disable MemberCanBePrivate.Global
 // ReSharper disable UnusedMember.Global

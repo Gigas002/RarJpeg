@@ -7,7 +7,7 @@ using MaterialDesignExtensions.Controls;
 using MaterialDesignThemes.Wpf;
 using RarJpeg.Helpers;
 using RarJpeg.Models;
-using RarJpeg.Properties;
+using RarJpeg.Localization;
 
 // ReSharper disable MemberCanBePrivate.Global
 // ReSharper disable UnusedMember.Global
