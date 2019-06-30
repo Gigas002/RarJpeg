@@ -20,8 +20,6 @@ namespace RarJpeg.ViewModels
     /// </summary>
     internal class MainViewModel : PropertyChangedBase
     {
-        //todo make material dialogs dark
-
         #region Properties
 
         #region UI
