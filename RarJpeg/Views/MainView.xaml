@@ -27,7 +27,8 @@
     Icon="/RarJpeg;component/Resources/Icon.ico">
     <mahApps:MetroWindow.Resources>
         <ResourceDictionary>
-            <DataTemplate DataType="{x:Type viewModels:MessageBoxDialogViewModel}">
+            <DataTemplate 
+                DataType="{x:Type viewModels:MessageBoxDialogViewModel}">
                 <views:MessageBoxDialogView/>
             </DataTemplate>
         </ResourceDictionary>

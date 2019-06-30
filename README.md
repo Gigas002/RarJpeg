@@ -1,6 +1,6 @@
 # RarJpeg
 
-Very small and simple project on **WPF** for creating `*.%archiveExtension%.%imageExtension%` files. Solution is build in **VS2019 (16.1.3)**, **.NET Framework 4.8**, targeting **Windows x64** systems.
+Very small and simple project on **WPF** for creating `*.%archiveExtension%.%imageExtension%` files. Solution is build in **VS2019 (16.1.4)**, **.NET Framework 4.8**, targeting **Windows x64** systems.
 
 I know, that GUI is kind of useless, since you can do it with one line in console: `copy /b image1.jpg+something.rar image2.jpg`, but still I wanted create it. Why not?
 
@@ -28,14 +28,12 @@ Just select any image as container and any archive as… well, archive. Then, se
 ## Dependencies
 
 - [Caliburn.Micro](<https://www.nuget.org/packages/Caliburn.Micro>) – 3.2.0;
-- [ControlzEx](<https://www.nuget.org/packages/ControlzEx>) – 3.0.2.4 (required by `MaterialDesignThemes`);
-- [MahApps.Metro](<https://www.nuget.org/packages/MahApps.Metro>) – 1.6.5 (required by `MaterialDesignThemes`);
-- [MaterialDesignColors](<https://www.nuget.org/packages/MaterialDesignColors>) – 1.1.3 (required by `MaterialDesignThemes` and `MaterialDesignExtensions`);
+- [MahApps.Metro](<https://www.nuget.org/packages/MahApps.Metro>) – 1.6.5;
+- [MaterialDesignColors](<https://www.nuget.org/packages/MaterialDesignColors>) – 1.1.3;
 - [MaterialDesignThemes](<https://www.nuget.org/packages/MaterialDesignThemes>) – 2.5.1;
 - [MaterialDesignExtensions](<https://www.nuget.org/packages/MaterialDesignExtensions/>) – 2.6.0;
 - [SharpZipLib](<https://www.nuget.org/packages/SharpZipLib/>) – 1.1.0;
 - [System.Threading.Tasks.Extensions](<https://www.nuget.org/packages/System.Threading.Tasks.Extensions>) – 4.5.2;
-- [System.Runtime.CompilerServices.Unsafe](<https://www.nuget.org/packages/System.Runtime.CompilerServices.Unsafe>) – 4.5.2 (required by `System.Threading.Tasks.Extensions`);
 
 ## Localization
 

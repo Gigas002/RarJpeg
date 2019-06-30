@@ -290,10 +290,9 @@ namespace RarJpeg.ViewModels
             //Check if container file doesn't have extension.
             if (string.IsNullOrWhiteSpace(Path.GetExtension(ContainerPath)))
             {
-                //You can actually continue, if it doesn't have extension, just tap "OK" on MessageBox.
-                if (!(bool)
-                        await DialogHost.Show(new MessageBoxDialogViewModel(Strings.ContainerExtension,
-                                                                            true)))
+                //You can actually continue, if it doesn't have extension, just click "OK" on MessageBox.
+                if (!(bool) await DialogHost.Show(new MessageBoxDialogViewModel
+                                                      (Strings.ContainerExtension, true)))
                     throw new Exception(string.Empty);
             }
 
