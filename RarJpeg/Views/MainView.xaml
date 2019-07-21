@@ -10,6 +10,7 @@
     xmlns:viewModels="clr-namespace:RarJpeg.ViewModels"
     xmlns:views="clr-namespace:RarJpeg.Views"
     mc:Ignorable="d"
+
     Background="{DynamicResource MaterialDesignPaper}"
     FontFamily="{DynamicResource MaterialDesignFont}"
     TextElement.FontSize="14"
