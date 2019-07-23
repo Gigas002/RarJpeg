@@ -31,7 +31,7 @@ Just select any image as container and any archive as… well, archive. Then, se
 - [MahApps.Metro](<https://www.nuget.org/packages/MahApps.Metro>) – 1.6.5;
 - [MaterialDesignColors](<https://www.nuget.org/packages/MaterialDesignColors>) – 1.2.0;
 - [MaterialDesignThemes](<https://www.nuget.org/packages/MaterialDesignThemes>) – 2.6.0;
-- [MaterialDesignExtensions](<https://www.nuget.org/packages/MaterialDesignExtensions/>) – 2.6.0;
+- [MaterialDesignExtensions](<https://www.nuget.org/packages/MaterialDesignExtensions/>) – 2.7.0;
 - [SharpZipLib](<https://www.nuget.org/packages/SharpZipLib/>) – 1.1.0;
 - [System.Threading.Tasks.Extensions](<https://www.nuget.org/packages/System.Threading.Tasks.Extensions>) – 4.5.3;
 
