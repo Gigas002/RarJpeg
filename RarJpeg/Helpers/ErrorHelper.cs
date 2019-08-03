@@ -17,10 +17,10 @@ namespace RarJpeg.Helpers
         /// <returns></returns>
         public static async ValueTask ShowException(Exception exception)
         {
-            await DialogHost.Show(new MessageBoxDialogViewModel(exception.Message));
+            await DialogHost.Show(new MessageBoxDialogViewModel(exception.Message)).ConfigureAwait(false);
 
             #if DEBUG
-            if (exception.InnerException != null) await DialogHost.Show(new MessageBoxDialogViewModel(exception.InnerException.Message));
+            if (exception.InnerException != null) await DialogHost.Show(new MessageBoxDialogViewModel(exception.InnerException.Message)).ConfigureAwait(false);
             #endif
         }
 
@@ -32,10 +32,10 @@ namespace RarJpeg.Helpers
         /// <returns><see langword="false"/>.</returns>
         public static async ValueTask<bool> ShowError(string errorMessage, Exception exception)
         {
-            await DialogHost.Show(new MessageBoxDialogViewModel(errorMessage));
+            await DialogHost.Show(new MessageBoxDialogViewModel(errorMessage)).ConfigureAwait(false);
 
             #if DEBUG
-            if (exception != null) await DialogHost.Show(new MessageBoxDialogViewModel(exception.Message));
+            if (exception != null) await DialogHost.Show(new MessageBoxDialogViewModel(exception.Message)).ConfigureAwait(false);
             #endif
 
             return false;

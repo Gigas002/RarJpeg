@@ -154,12 +154,12 @@ namespace RarJpeg.ViewModels
                 OpenFileDialogResult dialogResult =
                     await OpenFileDialog.ShowDialogAsync(Enums.MainViewModel.DialogHostId,
                                                          new OpenFileDialogArguments
-                                                             {CreateNewDirectoryEnabled = true});
+                                                             {CreateNewDirectoryEnabled = true}).ConfigureAwait(false);
                 ContainerPath = dialogResult.Canceled ? ContainerPath : dialogResult.FileInfo.FullName;
             }
             catch (Exception exception)
             {
-                await ErrorHelper.ShowException(exception);
+                await ErrorHelper.ShowException(exception).ConfigureAwait(false);
             }
         }
 
@@ -174,12 +174,12 @@ namespace RarJpeg.ViewModels
                 OpenFileDialogResult dialogResult =
                     await OpenFileDialog.ShowDialogAsync(Enums.MainViewModel.DialogHostId,
                                                          new OpenFileDialogArguments
-                                                             {CreateNewDirectoryEnabled = true});
+                                                             {CreateNewDirectoryEnabled = true}).ConfigureAwait(false);
                 ArchivePath = dialogResult.Canceled ? ArchivePath : dialogResult.FileInfo.FullName;
             }
             catch (Exception exception)
             {
-                await ErrorHelper.ShowException(exception);
+                await ErrorHelper.ShowException(exception).ConfigureAwait(false);
             }
         }
 
@@ -194,12 +194,12 @@ namespace RarJpeg.ViewModels
                 SaveFileDialogResult dialogResult =
                     await SaveFileDialog.ShowDialogAsync(Enums.MainViewModel.DialogHostId,
                                                          new SaveFileDialogArguments
-                                                             {CreateNewDirectoryEnabled = true});
+                                                             {CreateNewDirectoryEnabled = true}).ConfigureAwait(false);
                 OutputPath = dialogResult.Canceled ? OutputPath : dialogResult.FileInfo.FullName;
             }
             catch (Exception exception)
             {
-                await ErrorHelper.ShowException(exception);
+                await ErrorHelper.ShowException(exception).ConfigureAwait(false);
             }
         }
 
@@ -210,22 +210,22 @@ namespace RarJpeg.ViewModels
         public async ValueTask StartButton()
         {
             //Do some checks before running.
-            if (!await StartWork()) return;
+            if (!await StartWork().ConfigureAwait(false)) return;
 
             //Shows, if completed successfuly.
             bool isSuccessful = true;
             try
             {
-                await Task.Run(() => MainModel.RarJpeg(ContainerPath, ArchivePath, _outputPath));
+                await Task.Run(() => MainModel.RarJpeg(ContainerPath, ArchivePath, _outputPath)).ConfigureAwait(false);
             }
             catch (Exception exception)
             {
-                await ErrorHelper.ShowException(exception);
+                await ErrorHelper.ShowException(exception).ConfigureAwait(false);
                 isSuccessful = false;
             }
 
             //Do some stuff, like unblocking UI.
-            await CancelWork(isSuccessful);
+            await CancelWork(isSuccessful).ConfigureAwait(false);
         }
 
         #endregion
@@ -243,7 +243,7 @@ namespace RarJpeg.ViewModels
 
             try
             {
-                await CheckData();
+                await CheckData().ConfigureAwait(false);
             }
             catch (Exception exception)
             {
@@ -251,7 +251,7 @@ namespace RarJpeg.ViewModels
                 if (string.IsNullOrWhiteSpace(exception.Message)) return false;
 
                 //Show other errors.
-                await ErrorHelper.ShowException(exception);
+                await ErrorHelper.ShowException(exception).ConfigureAwait(false);
                 return false;
             }
 
@@ -272,7 +272,7 @@ namespace RarJpeg.ViewModels
         {
             IsGridEnabled = true;
             _outputPath = OutputPath;
-            if (isSuccessful) await DialogHost.Show(new MessageBoxDialogViewModel(Strings.Done));
+            if (isSuccessful) await DialogHost.Show(new MessageBoxDialogViewModel(Strings.Done)).ConfigureAwait(false);
         }
 
         /// <summary>
@@ -292,7 +292,7 @@ namespace RarJpeg.ViewModels
             {
                 //You can actually continue, if it doesn't have extension, just click "OK" on MessageBox.
                 if (!(bool) await DialogHost.Show(new MessageBoxDialogViewModel
-                                                      (Strings.ContainerExtension, true)))
+                                                      (Strings.ContainerExtension, true)).ConfigureAwait(false))
                     throw new Exception(string.Empty);
             }
 
