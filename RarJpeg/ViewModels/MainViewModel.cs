@@ -310,12 +310,9 @@ namespace RarJpeg.ViewModels
 
             //Check if container file doesn't have extension.
             if (string.IsNullOrWhiteSpace(Path.GetExtension(ContainerPath)))
-            {
                 //You can actually continue, if it doesn't have extension, just click "OK" on MessageBox.
-                if (!(bool) await DialogHost.Show(new MessageBoxDialogViewModel
-                                                      (Strings.ContainerExtension, true)).ConfigureAwait(false))
+                if (!(bool) await DialogHost.Show(new MessageBoxDialogViewModel(Strings.ContainerExtension, true)).ConfigureAwait(false))
                     throw new Exception(string.Empty);
-            }
 
             #endregion
 
@@ -330,8 +327,10 @@ namespace RarJpeg.ViewModels
                 throw new Exception(Strings.ArchiveExtension);
 
             //Check if selected file is archive and is archive corrupted.
-            if (!new ZipFile(ArchivePath).TestArchive(true))
-                throw new Exception(Strings.ArchiveCorrupted);
+            using (ZipFile zipFile = new ZipFile(ArchivePath))
+            {
+                if (!zipFile.TestArchive(true)) throw new Exception(Strings.ArchiveCorrupted);
+            }
 
             #endregion
 
