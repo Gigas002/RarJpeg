@@ -1,6 +1,6 @@
 # RarJpeg
 
-Very small and simple project on **WPF** for creating `*.%archiveExtension%.%imageExtension%` files. Solution is build in **VS2019 (16.1.6)**, **.NET Framework 4.8**, targeting **Windows x64** systems.
+Very small and simple project on **WPF** for creating `*.%archiveExtension%.%imageExtension%` files. Solution is build in **VS2019 (16.2.3)**, **.NET Framework 4.8**, targeting **Windows x64** systems.
 
 I know, that GUI is kind of useless, since you can do it with one line in console: `copy /b image1.jpg+something.rar image2.jpg`, but still I wanted create it. Why not?
 
@@ -32,7 +32,7 @@ Just select any image as container and any archive as… well, archive. Then, se
 - [MaterialDesignColors](<https://www.nuget.org/packages/MaterialDesignColors>) – 1.2.0;
 - [MaterialDesignThemes](<https://www.nuget.org/packages/MaterialDesignThemes>) – 2.6.0;
 - [MaterialDesignExtensions](<https://www.nuget.org/packages/MaterialDesignExtensions/>) – 2.7.0;
-- [SharpZipLib](<https://www.nuget.org/packages/SharpZipLib/>) – 1.1.0;
+- [SharpZipLib](<https://www.nuget.org/packages/SharpZipLib/>) – 1.2.0;
 - [System.Threading.Tasks.Extensions](<https://www.nuget.org/packages/System.Threading.Tasks.Extensions>) – 4.5.3;
 
 ## Localization
