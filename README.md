@@ -6,6 +6,8 @@ I know, that GUI is kind of useless, since you can do it with one line in consol
 
 [![Build status](https://ci.appveyor.com/api/projects/status/7wvh1l5kv3bi9iae?svg=true)](https://ci.appveyor.com/project/Gigas002/rarjpeg)
 
+**RarJpeg.NetCore** build is in WIP/preview state. It works, but I’ll release stable version later.
+
 ## Current version
 
 You can get stable pre-built binaries here: [![Release](https://img.shields.io/github/release/Gigas002/RarJpeg.svg)](https://github.com/Gigas002/RarJpeg/releases/latest). This project supports [SemVer 2.0.0](https://semver.org/) (template is `{MAJOR}.{MINOR}.{PATCH}.{BUILD}`).
@@ -21,17 +23,16 @@ Previous versions can be found on [releases](https://github.com/Gigas002/RarJpeg
 
 ## Usage
 
-Just select any image as container and any archive as… well, archive. Then, select the output file’s path (do not write any extensions here please) and press **Start**.
+Just select **any image as container** and **any archive** as… well, archive. Then, select the **output file’s path** (*don’t write any extensions here please*) and press **Start**.
 
 ![Main page](Screenshots/MainPage.png)
 
 ## Dependencies
 
 - [Caliburn.Micro](<https://www.nuget.org/packages/Caliburn.Micro>) – 3.2.0;
-- [MahApps.Metro](<https://www.nuget.org/packages/MahApps.Metro>) – 1.6.5;
 - [MaterialDesignColors](<https://www.nuget.org/packages/MaterialDesignColors>) – 1.2.0;
 - [MaterialDesignThemes](<https://www.nuget.org/packages/MaterialDesignThemes>) – 2.6.0;
-- [MaterialDesignExtensions](<https://www.nuget.org/packages/MaterialDesignExtensions/>) – 2.7.0;
+- [MaterialDesignExtensions](<https://www.nuget.org/packages/MaterialDesignExtensions/>) – 2.8.0-a01;
 - [SharpZipLib](<https://www.nuget.org/packages/SharpZipLib/>) – 1.2.0;
 - [System.Threading.Tasks.Extensions](<https://www.nuget.org/packages/System.Threading.Tasks.Extensions>) – 4.5.3;
 
