@@ -5,9 +5,11 @@ using Caliburn.Micro;
 using ICSharpCode.SharpZipLib.Zip;
 using MaterialDesignExtensions.Controls;
 using MaterialDesignThemes.Wpf;
+using RarJpeg.Enums;
 using RarJpeg.Helpers;
 using RarJpeg.Models;
 using RarJpeg.Localization;
+using RarJpeg.Properties;
 
 // ReSharper disable MemberCanBePrivate.Global
 // ReSharper disable UnusedMember.Global
@@ -21,6 +23,15 @@ namespace RarJpeg.ViewModels
     internal class MainViewModel : PropertyChangedBase
     {
         #region Properties
+
+        #region Settings
+
+        /// <summary>
+        /// Shows if dark theme selected.
+        /// </summary>
+        public bool IsDarkTheme { get; } = Settings.Default.IsDarkTheme;
+
+        #endregion
 
         #region UI
 
@@ -60,6 +71,12 @@ namespace RarJpeg.ViewModels
         /// Identifier of DialogHost on <see cref="Views.MainView"/>.
         /// </summary>
         public string DialogHostId { get; } = Enums.MainViewModel.DialogHostId;
+
+        /// <summary>
+        /// Theme string for DialogHosts.
+        /// </summary>
+        // ReSharper disable once UnusedAutoPropertyAccessor.Global
+        public string Theme { get; }
 
         #region Backing fields
 
@@ -131,6 +148,10 @@ namespace RarJpeg.ViewModels
 
         public MainViewModel()
         {
+            //Setting the theme.
+            SetThemeModel.SetTheme(IsDarkTheme);
+            Theme = IsDarkTheme ? Themes.Dark : Themes.Light;
+
             IsGridEnabled = true;
             ContainerPath = string.Empty;
             ArchivePath = string.Empty;

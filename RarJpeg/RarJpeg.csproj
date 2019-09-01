@@ -127,12 +127,19 @@
     </ApplicationDefinition>
     <Compile Include="Enums\Dialogs.cs" />
     <Compile Include="Enums\MainViewModel.cs" />
+    <Compile Include="Enums\Themes.cs" />
     <Compile Include="Helpers\ErrorHelper.cs" />
     <Compile Include="Models\MainModel.cs" />
     <Compile Include="Localization\Strings.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Strings.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Models\SetThemeModel.cs" />
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+      <DependentUpon>Settings.settings</DependentUpon>
     </Compile>
     <Compile Include="ViewModels\MainViewModel.cs" />
     <Compile Include="ViewModels\MessageBoxDialogViewModel.cs" />
@@ -168,6 +175,10 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="Caliburn.Micro">
