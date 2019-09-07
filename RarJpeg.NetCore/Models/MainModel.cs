@@ -15,7 +15,7 @@ namespace RarJpeg.NetCore.Models
         /// <param name="containerFilePath">Full path to the container file.</param>
         /// <param name="archivePath">Full path to the archive.</param>
         /// <param name="outputFilePath">Full path to the output file.</param>
-        internal static async ValueTask RarJpeg(string containerFilePath, string archivePath, string outputFilePath)
+        internal static async ValueTask RarJpegAsync(string containerFilePath, string archivePath, string outputFilePath)
         {
             byte[] containerBytes = await File.ReadAllBytesAsync(containerFilePath).ConfigureAwait(false);
             byte[] archiveBytes = await File.ReadAllBytesAsync(archivePath).ConfigureAwait(false);

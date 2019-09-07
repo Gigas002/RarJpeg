@@ -82,7 +82,7 @@
                     </materialDesignThemes:HintAssist.Hint>
                 </TextBox>
                 <Button Grid.Row="0" Grid.Column="2"
-                        caliburnMicro:Message.Attach="SelectContainerButton"
+                        caliburnMicro:Message.Attach="SelectContainerButtonAsync"
                         Content="{materialDesignThemes:PackIcon Image}"/>
 
                 <!-- Grid.Row="2" -->
@@ -99,7 +99,7 @@
                     </materialDesignThemes:HintAssist.Hint>
                 </TextBox>
                 <Button Grid.Row="2" Grid.Column="2"
-                        caliburnMicro:Message.Attach="SelectArchiveButton"
+                        caliburnMicro:Message.Attach="SelectArchiveButtonAsync"
                         Content="{materialDesignThemes:PackIcon Archive}"/>
 
                 <!-- Grid.Row="4" -->
@@ -116,13 +116,13 @@
                     </materialDesignThemes:HintAssist.Hint>
                 </TextBox>
                 <Button Grid.Row="4" Grid.Column="2"
-                        caliburnMicro:Message.Attach="OutputPathButton"
+                        caliburnMicro:Message.Attach="OutputPathButtonAsync"
                         Content="{materialDesignThemes:PackIcon File}"/>
 
                 <!-- Grid.Row="6" -->
                 <Button Grid.Row="6" Grid.Column="0"
                         Grid.ColumnSpan="3"
-                        caliburnMicro:Message.Attach="StartButton"
+                        caliburnMicro:Message.Attach="StartButtonAsync"
                         Content="{Binding Start}"/>
 
                 <!-- Grid.Row="8" -->

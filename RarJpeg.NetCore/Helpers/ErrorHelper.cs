@@ -15,14 +15,13 @@ namespace RarJpeg.NetCore.Helpers
         /// </summary>
         /// <param name="exception">Exception.</param>
         /// <returns></returns>
-        public static async ValueTask ShowException(Exception exception)
+        public static async ValueTask ShowExceptionAsync(Exception exception)
         {
             await DialogHost.Show(new MessageBoxDialogViewModel(exception.Message)).ConfigureAwait(false);
 
             #if DEBUG
-            if (exception.InnerException != null)
-                await DialogHost.Show(new MessageBoxDialogViewModel(exception.InnerException.Message))
-                                .ConfigureAwait(false);
+            await DialogHost.Show(new MessageBoxDialogViewModel(exception.InnerException?.Message))
+                            .ConfigureAwait(false);
             #endif
         }
 
@@ -33,16 +32,17 @@ namespace RarJpeg.NetCore.Helpers
         /// <param name="exception">Exception.</param>
         /// <returns><see langword="false"/>.</returns>
         // ReSharper disable once UnusedMember.Global
-        public static async ValueTask<bool> ShowError(string errorMessage, Exception exception)
+        public static async ValueTask<bool> ShowErrorAsync(string errorMessage, Exception exception)
         {
             await DialogHost.Show(new MessageBoxDialogViewModel(errorMessage)).ConfigureAwait(false);
 
             #if DEBUG
-            if (exception != null)
-                await DialogHost.Show(new MessageBoxDialogViewModel(exception.Message)).ConfigureAwait(false);
+            await DialogHost.Show(new MessageBoxDialogViewModel(exception?.Message)).ConfigureAwait(false);
+            await DialogHost.Show(new MessageBoxDialogViewModel(exception?.InnerException?.Message))
+                            .ConfigureAwait(false);
             #endif
 
-            return false;
+            return await new ValueTask<bool>(false).ConfigureAwait(false);
         }
     }
 }

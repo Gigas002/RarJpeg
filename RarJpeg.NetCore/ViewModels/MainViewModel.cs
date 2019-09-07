@@ -10,7 +10,6 @@ using RarJpeg.NetCore.Helpers;
 using RarJpeg.NetCore.Models;
 using RarJpeg.NetCore.Localization;
 using RarJpeg.NetCore.Properties;
-using RarJpeg.NetCore.Views;
 
 // ReSharper disable MemberCanBePrivate.Global
 // ReSharper disable UnusedMember.Global
@@ -18,8 +17,9 @@ using RarJpeg.NetCore.Views;
 
 namespace RarJpeg.NetCore.ViewModels
 {
+    /// <inheritdoc />
     /// <summary>
-    /// ViewModel for <see cref="MainView"/>.
+    /// ViewModel for <see cref="T:RarJpeg.NetCore.Views.MainView" />.
     /// </summary>
     internal class MainViewModel : PropertyChangedBase
     {
@@ -175,7 +175,7 @@ namespace RarJpeg.NetCore.ViewModels
         /// Button for selecting container file through Windows file explorer.
         /// </summary>
         /// <returns></returns>
-        public async ValueTask SelectContainerButton()
+        public async ValueTask SelectContainerButtonAsync()
         {
             try
             {
@@ -184,14 +184,14 @@ namespace RarJpeg.NetCore.ViewModels
                                                                           new OpenFileDialogArguments()).ConfigureAwait(true);
                 ContainerPath = dialogResult.Canceled ? ContainerPath : dialogResult.FileInfo.FullName;
             }
-            catch (Exception exception) { await ErrorHelper.ShowException(exception).ConfigureAwait(true); }
+            catch (Exception exception) { await ErrorHelper.ShowExceptionAsync(exception).ConfigureAwait(true); }
         }
 
         /// <summary>
         /// Button for selecting archive through Windows file explorer.
         /// </summary>
         /// <returns></returns>
-        public async ValueTask SelectArchiveButton()
+        public async ValueTask SelectArchiveButtonAsync()
         {
             try
             {
@@ -200,14 +200,14 @@ namespace RarJpeg.NetCore.ViewModels
                                                                           new OpenFileDialogArguments()).ConfigureAwait(true);
                 ArchivePath = dialogResult.Canceled ? ArchivePath : dialogResult.FileInfo.FullName;
             }
-            catch (Exception exception) { await ErrorHelper.ShowException(exception).ConfigureAwait(true); }
+            catch (Exception exception) { await ErrorHelper.ShowExceptionAsync(exception).ConfigureAwait(true); }
         }
 
         /// <summary>
         /// Button for selecting output file's path through Windows file explorer.
         /// </summary>
         /// <returns></returns>
-        public async ValueTask OutputPathButton()
+        public async ValueTask OutputPathButtonAsync()
         {
             try
             {
@@ -219,33 +219,33 @@ namespace RarJpeg.NetCore.ViewModels
                                                                           }).ConfigureAwait(true);
                 OutputPath = dialogResult.Canceled ? OutputPath : dialogResult.FileInfo.FullName;
             }
-            catch (Exception exception) { await ErrorHelper.ShowException(exception).ConfigureAwait(true); }
+            catch (Exception exception) { await ErrorHelper.ShowExceptionAsync(exception).ConfigureAwait(true); }
         }
 
         /// <summary>
         /// Button for starting the work.
         /// </summary>
         /// <returns></returns>
-        public async ValueTask StartButton()
+        public async ValueTask StartButtonAsync()
         {
             //Do some checks before running.
-            if (!await StartWork().ConfigureAwait(true)) return;
+            if (!await StartWorkAsync().ConfigureAwait(true)) return;
 
             //Shows, if completed successfuly.
             bool isSuccessful = true;
 
             try
             {
-                await MainModel.RarJpeg(ContainerPath, ArchivePath, TempOutputPath).ConfigureAwait(true);
+                await MainModel.RarJpegAsync(ContainerPath, ArchivePath, TempOutputPath).ConfigureAwait(true);
             }
             catch (Exception exception)
             {
-                await ErrorHelper.ShowException(exception).ConfigureAwait(true);
+                await ErrorHelper.ShowExceptionAsync(exception).ConfigureAwait(true);
                 isSuccessful = false;
             }
 
             //Do some stuff, like unblocking UI.
-            await CancelWork(isSuccessful).ConfigureAwait(true);
+            await CancelWorkAsync(isSuccessful).ConfigureAwait(true);
         }
 
         #endregion
@@ -257,18 +257,18 @@ namespace RarJpeg.NetCore.ViewModels
         /// <para>Also blocks the UI if everything is OK.</para>
         /// </summary>
         /// <returns><see langword="true"/> if no errors occured, <see langword="false"/> otherwise.</returns>
-        private async ValueTask<bool> StartWork()
+        private async ValueTask<bool> StartWorkAsync()
         {
             #region Cheсks
 
-            try { await CheckData().ConfigureAwait(true); }
+            try { await CheckDataAsync().ConfigureAwait(true); }
             catch (Exception exception)
             {
                 //Exception with string.Empty is returned, when container file doesn't have extension.
                 if (string.IsNullOrWhiteSpace(exception.Message)) return false;
 
                 //Show other errors.
-                await ErrorHelper.ShowException(exception).ConfigureAwait(true);
+                await ErrorHelper.ShowExceptionAsync(exception).ConfigureAwait(true);
 
                 return false;
             }
@@ -286,7 +286,7 @@ namespace RarJpeg.NetCore.ViewModels
         /// </summary>
         /// <param name="isSuccessful">Was the task successful?</param>
         /// <returns></returns>
-        private async ValueTask CancelWork(bool isSuccessful)
+        private async ValueTask CancelWorkAsync(bool isSuccessful)
         {
             IsGridEnabled = true;
             TempOutputPath = string.Empty;
@@ -297,7 +297,7 @@ namespace RarJpeg.NetCore.ViewModels
         /// Check all paths and files before the work actually starts.
         /// </summary>
         /// <returns></returns>
-        private async ValueTask CheckData()
+        private async ValueTask CheckDataAsync()
         {
             #region Check container file
 

@@ -4,8 +4,8 @@
     <OutputType>WinExe</OutputType>
     <TargetFramework>netcoreapp3.0</TargetFramework>
     <UseWPF>true</UseWPF>
-    <AssemblyVersion>1.0.1.58</AssemblyVersion>
-    <FileVersion>1.0.1.58</FileVersion>
+    <AssemblyVersion>1.0.1.71</AssemblyVersion>
+    <FileVersion>1.0.1.71</FileVersion>
     <StartupObject>RarJpeg.NetCore.App</StartupObject>
     <ApplicationIcon>Resources\Icon.ico</ApplicationIcon>
     <Platforms>AnyCPU;x64</Platforms>

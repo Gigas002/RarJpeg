@@ -8,8 +8,9 @@ using RarJpeg.NetCore.Localization;
 
 namespace RarJpeg.NetCore.ViewModels
 {
+    /// <inheritdoc />
     /// <summary>
-    /// Custom message box dialog. <see cref="Views.MessageBoxDialogView"/>.
+    /// Custom message box dialog. <see cref="T:RarJpeg.NetCore.Views.MessageBoxDialogView" />.
     /// </summary>
     internal sealed class MessageBoxDialogViewModel : PropertyChangedBase
     {
@@ -82,6 +83,7 @@ namespace RarJpeg.NetCore.ViewModels
 
         #region Constructors
 
+        /// <inheritdoc />
         /// <summary>
         /// Create message box.
         /// </summary>
