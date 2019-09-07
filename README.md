@@ -16,7 +16,7 @@ Previous versions can be found on [releases](https://github.com/Gigas002/RarJpeg
 
 ## Requirements
 
-- Windows 7 x64 and newer;
+- Windows 7 and newer;
 
 ## Usage
 
