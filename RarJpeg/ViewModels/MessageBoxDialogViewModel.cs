@@ -8,10 +8,11 @@ using RarJpeg.Localization;
 
 namespace RarJpeg.ViewModels
 {
+    /// <inheritdoc />
     /// <summary>
-    /// Custom message box dialog. <see cref="Views.MessageBoxDialogView"/>.
+    /// Custom message box dialog. <see cref="RarJpeg.Views.MessageBoxDialogView" />.
     /// </summary>
-    public class MessageBoxDialogViewModel : PropertyChangedBase
+    internal sealed class MessageBoxDialogViewModel : PropertyChangedBase
     {
         #region Properties and fields
 
@@ -82,6 +83,7 @@ namespace RarJpeg.ViewModels
 
         #region Constructors
 
+        /// <inheritdoc />
         /// <summary>
         /// Create message box.
         /// </summary>

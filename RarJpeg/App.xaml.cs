@@ -1,9 +1,8 @@
-﻿namespace RarJpeg
+namespace RarJpeg
 {
+    /// <inheritdoc />
     /// <summary>
     /// Interaction logic for App.xaml
     /// </summary>
-    public partial class App
-    {
-    }
+    internal sealed partial class App { }
 }

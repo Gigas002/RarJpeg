@@ -17,8 +17,9 @@ using RarJpeg.Properties;
 
 namespace RarJpeg.ViewModels
 {
+    /// <inheritdoc />
     /// <summary>
-    /// ViewModel for <see cref="Views.MainView"/>.
+    /// ViewModel for <see cref="T:RarJpeg.Views.MainView" />.
     /// </summary>
     internal class MainViewModel : PropertyChangedBase
     {
@@ -77,6 +78,11 @@ namespace RarJpeg.ViewModels
         /// </summary>
         // ReSharper disable once UnusedAutoPropertyAccessor.Global
         public string Theme { get; }
+
+        /// <summary>
+        /// Property to store real output path.
+        /// </summary>
+        private string TempOutputPath { get; set; }
 
         #region Backing fields
 
@@ -156,6 +162,7 @@ namespace RarJpeg.ViewModels
             ContainerPath = string.Empty;
             ArchivePath = string.Empty;
             OutputPath = string.Empty;
+            TempOutputPath = string.Empty;
         }
 
         #endregion
@@ -168,85 +175,77 @@ namespace RarJpeg.ViewModels
         /// Button for selecting container file through Windows file explorer.
         /// </summary>
         /// <returns></returns>
-        public async ValueTask SelectContainerButton()
+        public async ValueTask SelectContainerButtonAsync()
         {
             try
             {
-                OpenFileDialogResult dialogResult =
-                    await OpenFileDialog.ShowDialogAsync(Enums.MainViewModel.DialogHostId,
-                                                         new OpenFileDialogArguments
-                                                             {CreateNewDirectoryEnabled = true}).ConfigureAwait(false);
+                OpenFileDialogResult dialogResult = await OpenFileDialog
+                                                         .ShowDialogAsync(Enums.MainViewModel.DialogHostId,
+                                                                          new OpenFileDialogArguments()).ConfigureAwait(true);
                 ContainerPath = dialogResult.Canceled ? ContainerPath : dialogResult.FileInfo.FullName;
             }
-            catch (Exception exception)
-            {
-                await ErrorHelper.ShowException(exception).ConfigureAwait(false);
-            }
+            catch (Exception exception) { await ErrorHelper.ShowExceptionAsync(exception).ConfigureAwait(true); }
         }
 
         /// <summary>
         /// Button for selecting archive through Windows file explorer.
         /// </summary>
         /// <returns></returns>
-        public async ValueTask SelectArchiveButton()
+        public async ValueTask SelectArchiveButtonAsync()
         {
             try
             {
-                OpenFileDialogResult dialogResult =
-                    await OpenFileDialog.ShowDialogAsync(Enums.MainViewModel.DialogHostId,
-                                                         new OpenFileDialogArguments
-                                                             {CreateNewDirectoryEnabled = true}).ConfigureAwait(false);
+                OpenFileDialogResult dialogResult = await OpenFileDialog
+                                                         .ShowDialogAsync(Enums.MainViewModel.DialogHostId,
+                                                                          new OpenFileDialogArguments()).ConfigureAwait(true);
                 ArchivePath = dialogResult.Canceled ? ArchivePath : dialogResult.FileInfo.FullName;
             }
-            catch (Exception exception)
-            {
-                await ErrorHelper.ShowException(exception).ConfigureAwait(false);
-            }
+            catch (Exception exception) { await ErrorHelper.ShowExceptionAsync(exception).ConfigureAwait(true); }
         }
 
         /// <summary>
         /// Button for selecting output file's path through Windows file explorer.
         /// </summary>
         /// <returns></returns>
-        public async ValueTask OutputPathButton()
+        public async ValueTask OutputPathButtonAsync()
         {
             try
             {
-                SaveFileDialogResult dialogResult =
-                    await SaveFileDialog.ShowDialogAsync(Enums.MainViewModel.DialogHostId,
-                                                         new SaveFileDialogArguments
-                                                             {CreateNewDirectoryEnabled = true}).ConfigureAwait(false);
+                SaveFileDialogResult dialogResult = await SaveFileDialog
+                                                         .ShowDialogAsync(Enums.MainViewModel.DialogHostId,
+                                                                          new SaveFileDialogArguments
+                                                                          {
+                                                                              CreateNewDirectoryEnabled = true
+                                                                          }).ConfigureAwait(true);
                 OutputPath = dialogResult.Canceled ? OutputPath : dialogResult.FileInfo.FullName;
             }
-            catch (Exception exception)
-            {
-                await ErrorHelper.ShowException(exception).ConfigureAwait(false);
-            }
+            catch (Exception exception) { await ErrorHelper.ShowExceptionAsync(exception).ConfigureAwait(true); }
         }
 
         /// <summary>
         /// Button for starting the work.
         /// </summary>
         /// <returns></returns>
-        public async ValueTask StartButton()
+        public async ValueTask StartButtonAsync()
         {
             //Do some checks before running.
-            if (!await StartWork().ConfigureAwait(false)) return;
+            if (!await StartWorkAsync().ConfigureAwait(true)) return;
 
             //Shows, if completed successfuly.
             bool isSuccessful = true;
+
             try
             {
-                await Task.Run(() => MainModel.RarJpeg(ContainerPath, ArchivePath, _outputPath)).ConfigureAwait(false);
+                await MainModel.RarJpegAsync(ContainerPath, ArchivePath, TempOutputPath).ConfigureAwait(true);
             }
             catch (Exception exception)
             {
-                await ErrorHelper.ShowException(exception).ConfigureAwait(false);
+                await ErrorHelper.ShowExceptionAsync(exception).ConfigureAwait(true);
                 isSuccessful = false;
             }
 
             //Do some stuff, like unblocking UI.
-            await CancelWork(isSuccessful).ConfigureAwait(false);
+            await CancelWorkAsync(isSuccessful).ConfigureAwait(true);
         }
 
         #endregion
@@ -258,21 +257,19 @@ namespace RarJpeg.ViewModels
         /// <para>Also blocks the UI if everything is OK.</para>
         /// </summary>
         /// <returns><see langword="true"/> if no errors occured, <see langword="false"/> otherwise.</returns>
-        private async ValueTask<bool> StartWork()
+        private async ValueTask<bool> StartWorkAsync()
         {
             #region Cheсks
 
-            try
-            {
-                await CheckData().ConfigureAwait(false);
-            }
+            try { await CheckDataAsync().ConfigureAwait(true); }
             catch (Exception exception)
             {
                 //Exception with string.Empty is returned, when container file doesn't have extension.
                 if (string.IsNullOrWhiteSpace(exception.Message)) return false;
 
                 //Show other errors.
-                await ErrorHelper.ShowException(exception).ConfigureAwait(false);
+                await ErrorHelper.ShowExceptionAsync(exception).ConfigureAwait(true);
+
                 return false;
             }
 
@@ -285,22 +282,22 @@ namespace RarJpeg.ViewModels
         }
 
         /// <summary>
-        /// Enable UI and return inner <see cref="OutputPath"/> to correct value.
+        /// Enable UI and return inner <see cref="TempOutputPath"/> to correct value.
         /// </summary>
         /// <param name="isSuccessful">Was the task successful?</param>
         /// <returns></returns>
-        private async ValueTask CancelWork(bool isSuccessful)
+        private async ValueTask CancelWorkAsync(bool isSuccessful)
         {
             IsGridEnabled = true;
-            _outputPath = OutputPath;
-            if (isSuccessful) await DialogHost.Show(new MessageBoxDialogViewModel(Strings.Done)).ConfigureAwait(false);
+            TempOutputPath = string.Empty;
+            if (isSuccessful) await DialogHost.Show(new MessageBoxDialogViewModel(Strings.Done)).ConfigureAwait(true);
         }
 
         /// <summary>
         /// Check all paths and files before the work actually starts.
         /// </summary>
         /// <returns></returns>
-        private async ValueTask CheckData()
+        private async ValueTask CheckDataAsync()
         {
             #region Check container file
 
@@ -311,7 +308,8 @@ namespace RarJpeg.ViewModels
             //Check if container file doesn't have extension.
             if (string.IsNullOrWhiteSpace(Path.GetExtension(ContainerPath)))
                 //You can actually continue, if it doesn't have extension, just click "OK" on MessageBox.
-                if (!(bool) await DialogHost.Show(new MessageBoxDialogViewModel(Strings.ContainerExtension, true)).ConfigureAwait(false))
+                if (!(bool) await DialogHost.Show(new MessageBoxDialogViewModel(Strings.ContainerExtension, true))
+                                            .ConfigureAwait(true))
                     throw new Exception(string.Empty);
 
             #endregion
@@ -327,30 +325,25 @@ namespace RarJpeg.ViewModels
                 throw new Exception(Strings.ArchiveExtension);
 
             //Check if selected file is archive and is archive corrupted.
-            using (ZipFile zipFile = new ZipFile(ArchivePath))
-            {
-                if (!zipFile.TestArchive(true)) throw new Exception(Strings.ArchiveCorrupted);
-            }
+            using ZipFile zipFile = new ZipFile(ArchivePath);
+
+            if (!zipFile.TestArchive(true)) throw new Exception(Strings.ArchiveCorrupted);
 
             #endregion
 
             #region Check output file
 
             //Check if output file's path isn't empty.
-            if (string.IsNullOrWhiteSpace(OutputPath))
-                throw new Exception(Strings.OutputEmpty);
+            if (string.IsNullOrWhiteSpace(OutputPath)) throw new Exception(Strings.OutputEmpty);
 
             //Check if output file's path contain extension.
-            if (!string.IsNullOrWhiteSpace(Path.GetExtension(OutputPath)))
-                throw new Exception(Strings.OutputExtension);
+            if (!string.IsNullOrWhiteSpace(Path.GetExtension(OutputPath))) throw new Exception(Strings.OutputExtension);
 
-            //Change inner OutputPath's value: adding needed extensions.
-            _outputPath = $"{OutputPath}{Path.GetExtension(ArchivePath)}" +
-                             $"{Path.GetExtension(ContainerPath)}";
+            //Change TempOutputPath's' value: adding needed extensions.
+            TempOutputPath = $"{OutputPath}{Path.GetExtension(ArchivePath)}{Path.GetExtension(ContainerPath)}";
 
             //Check if output file already exists.
-            if (File.Exists(_outputPath))
-                throw new Exception(Strings.OutputExist);
+            if (File.Exists(TempOutputPath)) throw new Exception(Strings.OutputExist);
 
             #endregion
         }

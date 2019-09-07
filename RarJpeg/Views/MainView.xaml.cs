@@ -1,9 +1,11 @@
-﻿namespace RarJpeg.Views
+﻿// ReSharper disable All
+
+namespace RarJpeg.Views
 {
     /// <summary>
     /// Interaction logic for MainView.xaml
     /// </summary>
-    public partial class MainView
+    public sealed partial class MainView
     {
         public MainView() => InitializeComponent();
     }

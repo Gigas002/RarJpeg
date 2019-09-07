@@ -12,7 +12,7 @@
              TextElement.Foreground="{DynamicResource MaterialDesignBody}"
              TextElement.FontSize="18"
              Height="{Binding Height}"
-             Width="{Binding Width}">
+             Width="{Binding Width}" x:ClassModifier="internal">
     <Grid>
         <!-- Message box's borders -->
         <Grid.RowDefinitions>

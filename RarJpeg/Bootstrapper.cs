@@ -4,10 +4,10 @@ using RarJpeg.ViewModels;
 
 namespace RarJpeg
 {
-    internal class Bootstrapper : BootstrapperBase
+    internal sealed class Bootstrapper : BootstrapperBase
     {
         public Bootstrapper() => Initialize();
 
-        protected override void OnStartup(object sender, StartupEventArgs e) => DisplayRootViewFor<MainViewModel>();
+        protected override void OnStartup(object sender, StartupEventArgs startupEventArgs) => DisplayRootViewFor<MainViewModel>();
     }
 }
