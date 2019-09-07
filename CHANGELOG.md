@@ -10,6 +10,8 @@
 - Removed **MahApps.Metro** package;
 - Replaced **MahApps.Metro.MetroWindow** with **MaterialDesignExtensions.MaterialWindow**;
 - App is rewritten on **.NET Core 3.0-preview9**;
+- Add support for x86 Windows;
+- Now packaging standalone single-exe program;
 
 ## 30.06.2019 – Released 1.0.1
 
@@ -18,4 +20,3 @@
 - Made `OpenFileDialog` and `SaveFileDialog` dark.
 
 ## 13.06.2019 – Released 1.0.0
-
