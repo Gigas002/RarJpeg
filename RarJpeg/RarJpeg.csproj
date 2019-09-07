@@ -3,6 +3,7 @@
   <PropertyGroup>
     <OutputType>WinExe</OutputType>
     <TargetFramework>netcoreapp3.0</TargetFramework>
+    <LangVersion>preview</LangVersion>
     <UseWPF>true</UseWPF>
     <AssemblyVersion>1.0.1.77</AssemblyVersion>
     <FileVersion>1.0.1.77</FileVersion>

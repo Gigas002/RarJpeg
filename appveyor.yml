@@ -1,6 +1,8 @@
-image: Visual Studio 2019
+image: 
+- Visual Studio 2019 Preview
+- Visual Studio 2019
 
-version: 1.0.1.{build}
+version: 1.1.0.{build}-preview1
 
 platform: x64
 
