@@ -1,6 +1,6 @@
 # RarJpeg
 
-Very small and simple project on **WPF** for creating `*.%archiveExtension%.%imageExtension%` files. Solution is build in **VS2019 (16.2.4)**, **.NET Core 3.0 (preview9)**, targeting **Windows x64** systems.
+Very small and simple project on **WPF** for creating `*.%archiveExtension%.%imageExtension%` files. Solution is build in **VS2019 (16.2.4)**, **.NET Core 3.0 (preview9)**, targeting **Windows** systems.
 
 I know, that GUI is kind of useless, since you can do it with one line in console: `copy /b image1.jpg+something.rar image2.jpg`, but still I wanted create it. Why not?
 
