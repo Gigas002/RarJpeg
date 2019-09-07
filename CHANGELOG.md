@@ -5,11 +5,11 @@
 - Updated **MaterialDesignExtensions** package to **2.8.0-a01**;
 - Updated **MaterialDesignColors** package to **1.2.0**;
 - Updated **MaterialDesignThemes** package to **2.6.0**;
-- Updated **System.Threading.Tasks.Extensions** package to **4.5.3**;
+- Removed **System.Threading.Tasks.Extensions** package;
 - Updated **SharpZipLib** package to **1.2.0**;
 - Removed **MahApps.Metro** package;
 - Replaced **MahApps.Metro.MetroWindow** with **MaterialDesignExtensions.MaterialWindow**;
-- App is rewritten on **.NET Core 3.0-preview8**;
+- App is rewritten on **.NET Core 3.0-preview9**;
 
 ## 30.06.2019 – Released 1.0.1
 

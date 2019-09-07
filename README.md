@@ -1,12 +1,10 @@
 # RarJpeg
 
-Very small and simple project on **WPF** for creating `*.%archiveExtension%.%imageExtension%` files. Solution is build in **VS2019 (16.2.3)**, **.NET Framework 4.8**, targeting **Windows x64** systems.
+Very small and simple project on **WPF** for creating `*.%archiveExtension%.%imageExtension%` files. Solution is build in **VS2019 (16.2.4)**, **.NET Core 3.0 (preview9)**, targeting **Windows x64** systems.
 
 I know, that GUI is kind of useless, since you can do it with one line in console: `copy /b image1.jpg+something.rar image2.jpg`, but still I wanted create it. Why not?
 
 [![Build status](https://ci.appveyor.com/api/projects/status/7wvh1l5kv3bi9iae?svg=true)](https://ci.appveyor.com/project/Gigas002/rarjpeg)
-
-**RarJpeg.NetCore** build is in WIP/preview state. It works, but I’ll release stable version later.
 
 ## Current version
 
@@ -19,7 +17,6 @@ Previous versions can be found on [releases](https://github.com/Gigas002/RarJpeg
 ## Requirements
 
 - Windows 7 x64 and newer;
-- [.NET Framework 4.8](<https://dotnet.microsoft.com/download/dotnet-framework/net48>);
 
 ## Usage
 
@@ -38,7 +35,7 @@ Just select **any image as container** and **any archive** as… well, archive. 
 
 ## Localization
 
-There’s really not much to localize, but feel free to participate. Currently, only **English** and **Russian** are supported. All the localizable strings are located into `Localization/Strings.rexs`.
+There’s really not much to localize, but feel free to participate! Currently, only **English** and **Russian** are supported. All the localizable strings are located into `Localization/Strings.rexs`.
 
 ## Contributing
 
