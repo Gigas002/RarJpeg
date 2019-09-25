@@ -3,10 +3,9 @@
   <PropertyGroup>
     <OutputType>WinExe</OutputType>
     <TargetFramework>netcoreapp3.0</TargetFramework>
-    <LangVersion>preview</LangVersion>
     <UseWPF>true</UseWPF>
-    <AssemblyVersion>1.1.0.2</AssemblyVersion>
-    <FileVersion>1.1.0.2</FileVersion>
+    <AssemblyVersion>1.1.0.3</AssemblyVersion>
+    <FileVersion>1.1.0.3</FileVersion>
     <StartupObject>RarJpeg.App</StartupObject>
     <ApplicationIcon>Resources\Icon.ico</ApplicationIcon>
     <Platforms>AnyCPU;x64</Platforms>

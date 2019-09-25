@@ -9,7 +9,7 @@
 - Updated **SharpZipLib** package to **1.2.0**;
 - Removed **MahApps.Metro** package;
 - Replaced **MahApps.Metro.MetroWindow** with **MaterialDesignExtensions.MaterialWindow**;
-- App is rewritten on **.NET Core 3.0-preview9**;
+- App is rewritten on **.NET Core 3.0**;
 - Add support for x86 Windows;
 - Now packaging standalone single-exe program;
 
