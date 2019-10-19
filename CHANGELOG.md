@@ -12,6 +12,7 @@
 - App is rewritten on **.NET Core 3.0**;
 - Add support for x86 Windows;
 - Now packaging standalone single-exe program;
+- Update **Caliburn.Micro** to **4.0.91-alpha** (from MyGet);
 
 ## 30.06.2019 – Released 1.0.1
 

@@ -1,6 +1,6 @@
 # RarJpeg
 
-Very small and simple project on **WPF** for creating `*.%archiveExtension%.%imageExtension%` files. Solution is build in **VS2019 (16.3.0)**, **.NET Core 3.0**, targeting **Windows** systems. Solution can also be built in **VSCode** (**1.38.1**+) with [omnisharp-vscode](https://github.com/OmniSharp/omnisharp-vscode) extension (**1.21.3**+).
+Very small and simple project on **WPF** for creating `*.%archiveExtension%.%imageExtension%` files. Solution is build in **VS2019 (16.3.5)**, **.NET Core 3.0**, targeting **Windows** systems. Project can also be built in **VSCode** (**1.39.2**+) with [omnisharp-vscode](https://github.com/OmniSharp/omnisharp-vscode) extension (**1.21.5**+).
 
 I know, that GUI is kind of useless, since you can do it with one line in console: `copy /b image1.jpg+something.rar image2.jpg`, but still I wanted create it. Why not?
 
@@ -26,7 +26,7 @@ Just select **any image as container** and **any archive** as… well, archive. 
 
 ## Dependencies
 
-- [Caliburn.Micro](<https://www.nuget.org/packages/Caliburn.Micro>) – 3.2.0;
+- [Caliburn.Micro](<https://www.nuget.org/packages/Caliburn.Micro>) – 4.0.91-alpha (you can get this version on [MyGet](https://www.myget.org/feed/caliburn-micro-builds/package/nuget/Caliburn.Micro));
 - [MaterialDesignColors](<https://www.nuget.org/packages/MaterialDesignColors>) – 1.2.0;
 - [MaterialDesignThemes](<https://www.nuget.org/packages/MaterialDesignThemes>) – 2.6.0;
 - [MaterialDesignExtensions](<https://www.nuget.org/packages/MaterialDesignExtensions/>) – 2.8.0-a01;
