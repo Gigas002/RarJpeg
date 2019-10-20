@@ -29,7 +29,7 @@ Just select **any image as container** and **any archive** as… well, archive. 
 - [Caliburn.Micro](<https://www.nuget.org/packages/Caliburn.Micro>) – 4.0.91-alpha (you can get this version on [MyGet](https://www.myget.org/feed/caliburn-micro-builds/package/nuget/Caliburn.Micro));
 - [MaterialDesignColors](<https://www.nuget.org/packages/MaterialDesignColors>) – 1.2.0;
 - [MaterialDesignThemes](<https://www.nuget.org/packages/MaterialDesignThemes>) – 2.6.0;
-- [MaterialDesignExtensions](<https://www.nuget.org/packages/MaterialDesignExtensions/>) – 2.8.0-a01;
+- [MaterialDesignExtensions](<https://www.nuget.org/packages/MaterialDesignExtensions/>) – 2.8.0;
 - [SharpZipLib](<https://www.nuget.org/packages/SharpZipLib/>) – 1.2.0;
 - [System.Threading.Tasks.Extensions](<https://www.nuget.org/packages/System.Threading.Tasks.Extensions>) – 4.5.3;
 

@@ -2,7 +2,7 @@
 
 ## WIP
 
-- Updated **MaterialDesignExtensions** package to **2.8.0-a01**;
+- Updated **MaterialDesignExtensions** package to **2.8.0**;
 - Updated **MaterialDesignColors** package to **1.2.0**;
 - Updated **MaterialDesignThemes** package to **2.6.0**;
 - Removed **System.Threading.Tasks.Extensions** package;
