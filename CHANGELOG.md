@@ -9,10 +9,10 @@
 - Updated **SharpZipLib** package to **1.2.0**;
 - Removed **MahApps.Metro** package;
 - Replaced **MahApps.Metro.MetroWindow** with **MaterialDesignExtensions.MaterialWindow**;
-- App is rewritten on **.NET Core 3.0**;
+- App is rewritten on **.NET Core 3.1**;
 - Add support for x86 Windows;
 - Now packaging standalone single-exe program;
-- Update **Caliburn.Micro** to **4.0.91-alpha** (from MyGet);
+- Update **Caliburn.Micro** to **4.0.104-alpha** (from MyGet);
 
 ## 30.06.2019 – Released 1.0.1
 
