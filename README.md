@@ -4,7 +4,7 @@ Very small and simple project on **WPF** for creating `*.%archiveExtension%.%ima
 
 I know, that GUI is kind of useless, since you can do it with one line in console: `copy /b image1.jpg+something.rar image2.jpg`, but still I wanted create it. Why not?
 
-[![Build status](https://ci.appveyor.com/api/projects/status/7wvh1l5kv3bi9iae?svg=true)](https://ci.appveyor.com/project/Gigas002/rarjpeg)
+[![Build status](https://ci.appveyor.com/api/projects/status/7wvh1l5kv3bi9iae/branch/master?svg=true)](https://ci.appveyor.com/project/Gigas002/rarjpeg)
 
 ## Current version
 
