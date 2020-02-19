@@ -2,9 +2,9 @@
 
 ## WIP
 
-- Updated **MaterialDesignExtensions** package to **2.8.0**;
-- Updated **MaterialDesignColors** package to **1.2.0**;
-- Updated **MaterialDesignThemes** package to **2.6.0**;
+- Updated **MaterialDesignExtensions** package to **3.0.0**;
+- Updated **MaterialDesignColors** package to **1.2.2**;
+- Updated **MaterialDesignThemes** package to **3.0.1**;
 - Removed **System.Threading.Tasks.Extensions** package;
 - Updated **SharpZipLib** package to **1.2.0**;
 - Removed **MahApps.Metro** package;
@@ -12,7 +12,7 @@
 - App is rewritten on **.NET Core 3.1**;
 - Add support for x86 Windows;
 - Now packaging standalone single-exe program;
-- Update **Caliburn.Micro** to **4.0.104-alpha** (from MyGet);
+- Update **Caliburn.Micro** package to **4.0.105-alpha**;
 
 ## 30.06.2019 – Released 1.0.1
 
