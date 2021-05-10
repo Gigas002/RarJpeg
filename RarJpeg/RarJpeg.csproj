@@ -12,7 +12,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Caliburn.Micro" Version="4.0.105-alpha" />
+    <PackageReference Include="Caliburn.Micro" Version="4.0.173" />
     <PackageReference Include="MaterialDesignColors" Version="1.2.2" />
     <PackageReference Include="MaterialDesignExtensions" Version="3.0.0" />
     <PackageReference Include="MaterialDesignThemes" Version="3.0.1" />
